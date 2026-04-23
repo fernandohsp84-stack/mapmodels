@@ -142,10 +142,111 @@ textarea{resize:vertical;min-height:70px;}
 <body>
 
 <!-- ══════════════════════════════
+     TELA 0 — APRESENTAÇÃO
+══════════════════════════════ -->
+
+<div class="tela ativa" id="t0">
+  <div style="background:linear-gradient(160deg,#003F7A,#1A5CA0);padding:32px 20px 24px;text-align:center;">
+    <div style="width:64px;height:64px;background:#F47920;border-radius:16px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px;">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <rect x="2" y="2" width="28" height="28" rx="6" stroke="white" stroke-width="2.5" fill="none"/>
+        <path d="M7 16h18M16 7v18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div style="font-size:26px;font-weight:800;color:#fff;letter-spacing:-.4px;margin-bottom:6px;">ModelScan</div>
+    <div style="font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;">Catalogação inteligente de modelos institucionais<br>com pipeline de 5 agentes de IA</div>
+  </div>
+  <div class="wrap">
+
+```
+<div class="card">
+  <div class="card-t">O que é o ModelScan?</div>
+  <p class="txt" style="margin-bottom:10px;">O ModelScan <strong style="color:#1A1D23;">substitui o formulário de autodeclaração</strong> por um processo guiado e assistido por IA. Você informa onde está a documentação do modelo — arquivos, links ou código — e o sistema gera o <strong style="color:#1A1D23;">Model Card completo</strong> automaticamente, incluindo classificação técnica e nível de criticidade.</p>
+  <div style="background:#EBF3FB;border-radius:8px;padding:11px 14px;font-size:13px;color:#005CA9;"><strong>Tempo estimado:</strong> 5 a 20 minutos por modelo.</div>
+</div>
+
+<div class="card">
+  <div class="card-t">Pipeline de 5 Agentes de IA</div>
+  <div style="display:flex;flex-direction:column;gap:0;">
+
+    <div style="display:flex;gap:0;align-items:stretch;">
+      <div style="width:3px;background:#005CA9;border-radius:3px;margin:0 14px 0 12px;flex-shrink:0;"></div>
+      <div style="padding:10px 0 10px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+          <div style="width:24px;height:24px;background:#005CA9;border-radius:50%;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+          <div style="font-size:13px;font-weight:700;color:#1A1D23;">Agente de Ingestão</div>
+        </div>
+        <div style="font-size:12px;color:#717A8C;line-height:1.6;padding-left:32px;"><strong>Entrada:</strong> Arquivos, links e contexto adicional.<br><strong>Faz:</strong> Lê e extrai até 3.000 caracteres por arquivo, consolida todas as fontes em um corpus textual estruturado.<br><strong>Entrega para o próximo:</strong> Corpus completo com identificação de cada fonte.</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:0;align-items:stretch;">
+      <div style="width:3px;background:#0D7377;border-radius:3px;margin:0 14px 0 12px;flex-shrink:0;"></div>
+      <div style="padding:10px 0 10px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+          <div style="width:24px;height:24px;background:#0D7377;border-radius:50%;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+          <div style="font-size:13px;font-weight:700;color:#1A1D23;">Agente RAG</div>
+        </div>
+        <div style="font-size:12px;color:#717A8C;line-height:1.6;padding-left:32px;"><strong>Entrada:</strong> Corpus do Agente 1 + campos do formulário.<br><strong>Faz:</strong> Extrai trechos relevantes por categoria: objetivo, variáveis de entrada/saída, plataforma, métricas de performance.<br><strong>Entrega para o próximo:</strong> Conjunto estruturado de informações por categoria.</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:0;align-items:stretch;">
+      <div style="width:3px;background:#1B7F4F;border-radius:3px;margin:0 14px 0 12px;flex-shrink:0;"></div>
+      <div style="padding:10px 0 10px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+          <div style="width:24px;height:24px;background:#1B7F4F;border-radius:50%;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+          <div style="font-size:13px;font-weight:700;color:#1A1D23;">Agente Classificador</div>
+        </div>
+        <div style="font-size:12px;color:#717A8C;line-height:1.6;padding-left:32px;"><strong>Entrada:</strong> Categorias estruturadas do Agente 2.<br><strong>Faz:</strong> Classifica família (ML, Estatístico, Matemático/Financeiro, IA Gen.), técnica específica (ex: XGBoost, LSTM), plataforma e framework regulatório.<br><strong>Entrega para o próximo:</strong> Campos family, technique, platform, regulatory.</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:0;align-items:stretch;">
+      <div style="width:3px;background:#9A6200;border-radius:3px;margin:0 14px 0 12px;flex-shrink:0;"></div>
+      <div style="padding:10px 0 10px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+          <div style="width:24px;height:24px;background:#9A6200;border-radius:50%;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div>
+          <div style="font-size:13px;font-weight:700;color:#1A1D23;">Agente de Criticidade</div>
+        </div>
+        <div style="font-size:12px;color:#717A8C;line-height:1.6;padding-left:32px;"><strong>Entrada:</strong> Classificação do Ag.3 + corpus do Ag.2.<br><strong>Faz:</strong> Pontua 6 dimensões (D1 a D6, escala 1-5): Impacto Financeiro, Exposição Regulatória, Autonomia, Opacidade, Abrangência, Maturidade. Calcula média ponderada e nível N1–N5.<br><strong>Entrega para o próximo:</strong> Scores D1-D6, weighted_score, criticality_level, controles e escopo de validação.</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:0;align-items:stretch;">
+      <div style="width:3px;background:#F47920;border-radius:3px;margin:0 14px 0 12px;flex-shrink:0;"></div>
+      <div style="padding:10px 0 10px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+          <div style="width:24px;height:24px;background:#F47920;border-radius:50%;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">5</div>
+          <div style="font-size:13px;font-weight:700;color:#1A1D23;">Agente de Geração do Model Card</div>
+        </div>
+        <div style="font-size:12px;color:#717A8C;line-height:1.6;padding-left:32px;"><strong>Entrada:</strong> Todos os outputs dos Agentes 1 a 4.<br><strong>Faz:</strong> Consolida tudo em um JSON estruturado. Gera descrição narrativa, tags semânticas, rascunhos de notificação e indicador de confiança (0–100%).<br><strong>Entrega:</strong> Model Card completo com 18 campos prontos para revisão.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="card" style="background:#FDF5E6;">
+  <div class="card-t" style="color:#9A6200;">Antes de começar</div>
+  <div style="font-size:13px;color:#3C4353;line-height:2.1;">
+    &#8226; Documentação técnica do modelo (PDF, Word ou link)<br>
+    &#8226; Código-fonte ou notebook (opcional, recomendado)<br>
+    &#8226; Chave API Anthropic — <a href="https://console.anthropic.com" style="color:#005CA9;">console.anthropic.com</a><br>
+    &#8226; E-mail da Área de Validação de Modelos
+  </div>
+</div>
+```
+
+  </div>
+  <div class="btn-fixo"><button type="button" id="btn-t0">Iniciar Catalogação →</button></div>
+</div>
+
+<!-- ══════════════════════════════
      TELA 1 — IDENTIFICAÇÃO
 ══════════════════════════════ -->
 
-<div class="tela ativa" id="t1">
+<div class="tela" id="t1">
   <div class="hero">
     <div class="hero-icon">
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -294,7 +395,7 @@ var FILES=[],LINKS=[],SOURCES=[],RESULT=null,DECISION=null;
 
 // ── TELAS ───────────────────────────────────────
 function ir(id){
-  var all=['t1','t2','t3','t4'];
+  var all=['t0','t1','t2','t3','t4'];
   for(var i=0;i<all.length;i++){
     var el=document.getElementById(all[i]);
     if(el) el.className='tela'+(all[i]===id?' ativa':'');
@@ -528,39 +629,103 @@ function renderMC(r){
     +'<div class="email-pre">Equipe de Validação,\n\nNovo modelo — criticidade '+r.criticality_level
     +'.\n\nID: '+id+'\nModelo: '+r.model_name+'\nOwner: '+r.model_owner
     +'\nPontuação: '+((r.weighted_score||0).toFixed(2))+'/5\n\nModelScan</div></div>';
-  // Confirmação
-  h+='<div class="card"><div class="sec-lbl">Sua Confirmação</div>'
+  // Confirmação e Revisão
+  h+='<div class="card"><div class="sec-lbl">Moderação — Sua Confirmação</div>'
+    +'<p style="font-size:12px;color:#717A8C;line-height:1.6;margin-bottom:12px;">Revise todos os campos acima. Se estiver de acordo, confirme. Se houver divergências, solicite revisão e edite os campos ou justifique abaixo.</p>'
     +'<div class="dec-row">'
     +'<button class="dec-btn ap" type="button" id="btn-ap" onclick="setD(\'a\')">✓ Confirmo!</button>'
     +'<button class="dec-btn rj" type="button" id="btn-rj" onclick="setD(\'r\')">✎ Solicito revisão</button>'
     +'</div>'
-    +'<div id="ok-box" class="ok-box"></div>'
-    +'</div>';
-  // Exportar
-  h+='<div class="exp-row">'
-    +'<button class="exp-btn" type="button" onclick="expJ()">↓ JSON</button>'
-    +'<button class="exp-btn" type="button" onclick="expT()">↓ TXT</button>'
-    +'<button class="exp-btn" type="button" onclick="window.print()">↓ PDF</button>'
-    +'</div>';
-  G('mc-out').innerHTML=h;
+    // Painel de revisão — aparece só quando seleciona "Solicito revisão"
+    +'<div id="painel-revisao" style="display:none;margin-top:14px;border-top:1px solid #ECEEF2;padding-top:14px;">'
+    +'<div style="font-size:12px;font-weight:700;color:#9A6200;background:#FDF5E6;border:1px solid rgba(154,98,0,.2);border-radius:8px;padding:10px 12px;margin-bottom:12px;">✎ Painel de Revisão — edite os campos com divergência e justifique abaixo.</div>'
+    // Edição direta de campos
+    +'<div class="g2" style="margin-bottom:12px;">'
+    +'<div class="field" style="margin:0;"><label style="font-size:11px;">Corrigir Família</label><input type="text" id="r-family" placeholder="'+r.family+'"></div>'
+    +'<div class="field" style="margin:0;"><label style="font-size:11px;">Corrigir Técnica</label><input type="text" id="r-technique" placeholder="'+r.technique+'"></div>'
+    +'</div>'
+    +'<div class="g2" style="margin-bottom:12px;">'
+    +'<div class="field" style="margin:0;"><label style="font-size:11px;">Corrigir Nível de Criticidade</label>'
+    +'<select id="r-level" style="width:100%;border:1.5px solid #D0D5DD;border-radius:8px;padding:10px;font-size:14px;-webkit-appearance:none;">'
+    +'<option value="">manter ('+r.criticality_level+')</option>'
+    +'<option>N1</option><option>N2</option><option>N3</option><option>N4</option><option>N5</option>'
+    +'</select></div>'
+    +'<div class="field" style="margin:0;"><label style="font-size:11px;">Corrigir Plataforma</label><input type="text" id="r-platform" placeholder="'+r.platform+'"></div>'
+    +'</div>'
+    +'<div class="field" style="margin-bottom:10px;"><label style="font-size:11px;">Corrigir Descrição</label>'
+    +'<textarea id="r-desc" style="min-height:60px;" placeholder="'+r.description.substring(0,60)+'..."></textarea></div>'
+
+```
++'<div class="field" style="margin-bottom:10px;"><label style="font-size:11px;">Corrigir Escopo de Validação</label>'
++'<textarea id="r-scope" style="min-height:50px;" placeholder="'+r.validation_scope.substring(0,60)+'..."></textarea></div>'
+// Justificativa obrigatória
++'<div style="background:#FDF5E6;border:1px solid rgba(154,98,0,.25);border-radius:8px;padding:12px;margin-bottom:10px;">'
++'<label style="font-size:12px;font-weight:700;color:#9A6200;display:block;margin-bottom:6px;">Justificativa da Revisão (obrigatório)</label>'
++'<textarea id="r-justif" style="min-height:80px;border-color:rgba(154,98,0,.4);" placeholder="Descreva o que está divergente, qual o valor correto e por que a IA gerou diferente..."></textarea>'
++'</div>'
++'</div>'
++'<button type="button" id="btn-rev" style="display:block;width:100%;padding:14px;background:#9A6200 !important;color:#fff !important;border:none !important;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;-webkit-appearance:none !important;touch-action:manipulation;margin-bottom:0;">Registrar Revisão</button>'
++'<div id="ok-box" class="ok-box"></div>'
++'</div>';
+```
+
+// Exportar
+h+=’<div class="exp-row">’
++’<button class="exp-btn" type="button" onclick="expJ()">↓ JSON</button>’
++’<button class="exp-btn" type="button" onclick="expT()">↓ TXT</button>’
++’<button class="exp-btn" type="button" onclick="window.print()">↓ PDF</button>’
++’</div>’;
+G(‘mc-out’).innerHTML=h;
 }
 
 function setD(d){
-  DECISION=d;
-  var ba=G('btn-ap'),br=G('btn-rj'),ob=G('ok-box');
-  if(ba)ba.className='dec-btn ap'+(d==='a'?' on':'');
-  if(br)br.className='dec-btn rj'+(d==='r'?' on':'');
-  if(ob){
-    var ts=new Date().toLocaleString('pt-BR');
-    ob.style.display='block';
-    ob.innerHTML=d==='a'
-      ?'✅ Confirmado! Chave: <strong>'+(RESULT&&RESULT.uid||'')+'</strong><br>'+ts
-      :'✎ Revisão solicitada em '+ts;
-  }
+DECISION=d;
+var ba=G(‘btn-ap’),br=G(‘btn-rj’),pr=G(‘painel-revisao’),ob=G(‘ok-box’);
+if(ba)ba.className=‘dec-btn ap’+(d===‘a’?’ on’:’’);
+if(br)br.className=‘dec-btn rj’+(d===‘r’?’ on’:’’);
+// Mostrar/ocultar painel de revisão
+if(pr) pr.style.display=(d===‘r’?‘block’:‘none’);
+// Se confirmar, registrar imediatamente
+if(d===‘a’ && ob){
+var ts=new Date().toLocaleString(‘pt-BR’);
+ob.style.display=‘block’;
+ob.style.background=’#E6F4EE’;ob.style.color=’#1B7F4F’;
+ob.innerHTML=’✅ <strong>Confirmado!</strong> Chave: <strong>’+(RESULT&&RESULT.uid||’’)+’</strong><br>Por ‘+(GV(‘ow’)||‘Owner’)+’ em ’+ts;
+} else if(d===‘r’ && ob){
+ob.style.display=‘none’;
+}
 }
 
-function expJ(){if(!RESULT)return;var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(RESULT,null,2)],{type:'application/json'}));a.download='mc-'+(RESULT.uid||'mc')+'.json';document.body.appendChild(a);a.click();document.body.removeChild(a);}
-function expT(){if(!RESULT)return;var t='MODEL CARD: '+RESULT.model_name+'\nChave: '+RESULT.uid+'\nNível: '+RESULT.criticality_level+'\nPontuação: '+((RESULT.weighted_score||0).toFixed(2))+'\n\n'+RESULT.description+'\n\n'+RESULT.validation_scope;var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/plain'}));a.download='mc-'+(RESULT.uid||'mc')+'.txt';document.body.appendChild(a);a.click();document.body.removeChild(a);}
+function finalizarRevisao(){
+var just=GV(‘r-justif’);
+if(!just){alert(‘Preencha a Justificativa da Revisão.’);return;}
+var ts=new Date().toLocaleString(‘pt-BR’);
+// Aplicar correções ao RESULT
+var fam=GV(‘r-family’),tec=GV(‘r-technique’),lev=GV(‘r-level’),plat=GV(‘r-platform’),desc=GV(‘r-desc’),scope=GV(‘r-scope’);
+if(RESULT){
+if(fam)  RESULT.family=fam;
+if(tec)  RESULT.technique=tec;
+if(lev)  RESULT.criticality_level=lev;
+if(plat) RESULT.platform=plat;
+if(desc) RESULT.description=desc;
+if(scope)RESULT.validation_scope=scope;
+RESULT.revisao={timestamp:ts,owner:GV(‘ow’),justificativa:just,campos_corrigidos:{
+family:fam||null,technique:tec||null,criticality_level:lev||null,
+platform:plat||null,description:desc?’(editado)’:null,validation_scope:scope?’(editado)’:null
+}};
+}
+var ob=G(‘ok-box’);
+if(ob){
+ob.style.display=‘block’;
+ob.style.background=’#FDF5E6’;ob.style.color=’#9A6200’;ob.style.borderColor=‘rgba(154,98,0,.3)’;
+ob.innerHTML=’✎ <strong>Revisão registrada!</strong> Chave: <strong>’+(RESULT&&RESULT.uid||’’)+’</strong><br>’
++‘Justificativa: “’+just.substring(0,80)+(just.length>80?’…’:’’)+’”<br>’
++’Por ‘+(GV(‘ow’)||‘Owner’)+’ em ’+ts;
+}
+}
+
+function expJ(){if(!RESULT)return;var a=document.createElement(‘a’);a.href=URL.createObjectURL(new Blob([JSON.stringify(RESULT,null,2)],{type:‘application/json’}));a.download=‘mc-’+(RESULT.uid||‘mc’)+’.json’;document.body.appendChild(a);a.click();document.body.removeChild(a);}
+function expT(){if(!RESULT)return;var t=‘MODEL CARD: ‘+RESULT.model_name+’\nChave: ‘+RESULT.uid+’\nNível: ‘+RESULT.criticality_level+’\nPontuação: ‘+((RESULT.weighted_score||0).toFixed(2))+’\n\n’+RESULT.description+’\n\n’+RESULT.validation_scope;var a=document.createElement(‘a’);a.href=URL.createObjectURL(new Blob([t],{type:‘text/plain’}));a.download=‘mc-’+(RESULT.uid||‘mc’)+’.txt’;document.body.appendChild(a);a.click();document.body.removeChild(a);}
 
 // ════════════════════════════════════════════════
 // BOOTSTRAP — padrão Risk Intel
@@ -568,70 +733,93 @@ function expT(){if(!RESULT)return;var t='MODEL CARD: '+RESULT.model_name+'\nChav
 // ════════════════════════════════════════════════
 function bootstrap(){
 
-  // Botão T1: Próximo
-  var b1=G('btn-t1');
-  if(b1){
-    function f1(e){if(e)e.preventDefault();if(validarT1())ir('t2');}
-    b1.addEventListener('click',    f1, false);
-    b1.addEventListener('touchend', f1, false);
-    b1.addEventListener('touchstart',function(){},{passive:true});
-  }
+// Botão T1: Próximo
+var b1=G(‘btn-t1’);
+if(b1){
+function f1(e){if(e)e.preventDefault();if(validarT1())ir(‘t2’);}
+b1.addEventListener(‘click’,    f1, false);
+b1.addEventListener(‘touchend’, f1, false);
+b1.addEventListener(‘touchstart’,function(){},{passive:true});
+}
 
-  // Botão T2: Executar
-  var b2=G('btn-t2');
-  if(b2){
-    function f2(e){if(e)e.preventDefault();iniciarAnalise();}
-    b2.addEventListener('click',    f2, false);
-    b2.addEventListener('touchend', f2, false);
-    b2.addEventListener('touchstart',function(){},{passive:true});
-  }
+// Botão T2: Executar
+var b2=G(‘btn-t2’);
+if(b2){
+function f2(e){if(e)e.preventDefault();iniciarAnalise();}
+b2.addEventListener(‘click’,    f2, false);
+b2.addEventListener(‘touchend’, f2, false);
+b2.addEventListener(‘touchstart’,function(){},{passive:true});
+}
 
-  // Botão Voltar
-  var bv=G('btn-voltar');
-  if(bv){
-    function fv(e){if(e)e.preventDefault();ir('t1');}
-    bv.addEventListener('click',    fv, false);
-    bv.addEventListener('touchend', fv, false);
-    bv.addEventListener('touchstart',function(){},{passive:true});
-  }
+// Botão Voltar
+var bv=G(‘btn-voltar’);
+if(bv){
+function fv(e){if(e)e.preventDefault();ir(‘t1’);}
+bv.addEventListener(‘click’,    fv, false);
+bv.addEventListener(‘touchend’, fv, false);
+bv.addEventListener(‘touchstart’,function(){},{passive:true});
+}
 
-  // Botão Novo
-  var bn=G('btn-novo');
-  if(bn){
-    function fn(e){
-      if(e)e.preventDefault();
-      FILES=[];LINKS=[];SOURCES=[];RESULT=null;DECISION=null;
-      ir('t1');
-    }
-    bn.addEventListener('click',    fn, false);
-    bn.addEventListener('touchend', fn, false);
-    bn.addEventListener('touchstart',function(){},{passive:true});
-  }
+// Botão Novo
+var bn=G(‘btn-novo’);
+if(bn){
+function fn(e){
+if(e)e.preventDefault();
+FILES=[];LINKS=[];SOURCES=[];RESULT=null;DECISION=null;
+ir(‘t1’);
+}
+bn.addEventListener(‘click’,    fn, false);
+bn.addEventListener(‘touchend’, fn, false);
+bn.addEventListener(‘touchstart’,function(){},{passive:true});
+}
 
-  // Eye
-  var be=G('btn-eye');
-  if(be){
-    function fe(e){if(e)e.preventDefault();var i=G('api-key');if(i)i.type=(i.type==='password'?'text':'password');}
-    be.addEventListener('click',    fe, false);
-    be.addEventListener('touchend', fe, false);
-    be.addEventListener('touchstart',function(){},{passive:true});
-  }
+// Eye
+var be=G(‘btn-eye’);
+if(be){
+function fe(e){if(e)e.preventDefault();var i=G(‘api-key’);if(i)i.type=(i.type===‘password’?‘text’:‘password’);}
+be.addEventListener(‘click’,    fe, false);
+be.addEventListener(‘touchend’, fe, false);
+be.addEventListener(‘touchstart’,function(){},{passive:true});
+}
 
-  // Add link
-  var bl=G('btn-ladd');
-  if(bl){
-    function fl(e){if(e)e.preventDefault();addLink();}
-    bl.addEventListener('click',    fl, false);
-    bl.addEventListener('touchend', fl, false);
-    bl.addEventListener('touchstart',function(){},{passive:true});
-  }
+// Add link
+var bl=G(‘btn-ladd’);
+if(bl){
+function fl(e){if(e)e.preventDefault();addLink();}
+bl.addEventListener(‘click’,    fl, false);
+bl.addEventListener(‘touchend’, fl, false);
+bl.addEventListener(‘touchstart’,function(){},{passive:true});
+}
+
+// Botão T0: Iniciar
+var b0=G(‘btn-t0’);
+if(b0){
+function f0(e){if(e)e.preventDefault();ir(‘t1’);}
+b0.addEventListener(‘click’,    f0, false);
+b0.addEventListener(‘touchend’, f0, false);
+b0.addEventListener(‘touchstart’,function(){},{passive:true});
+}
+
+// Botão Registrar Revisão (dinâmico — usa delegação de eventos no document)
+document.addEventListener(‘click’, function(e){
+if(e.target && e.target.id===‘btn-rev’){
+e.preventDefault();
+finalizarRevisao();
+}
+});
+document.addEventListener(‘touchend’, function(e){
+if(e.target && e.target.id===‘btn-rev’){
+e.preventDefault();
+finalizarRevisao();
+}
+});
 }
 
 // Padrão Risk Intel
-if(document.readyState==='loading'){
-  document.addEventListener('DOMContentLoaded',bootstrap);
+if(document.readyState===‘loading’){
+document.addEventListener(‘DOMContentLoaded’,bootstrap);
 }else{
-  bootstrap();
+bootstrap();
 }
 </script>
 
