@@ -239,7 +239,7 @@ textarea{resize:vertical;min-height:70px;}
 ```
 
   </div>
-  <div class="btn-fixo"><button type="button" id="btn-t0">Iniciar Catalogação →</button></div>
+  <div class="btn-fixo"><button type="button" id="btn-t0">Iniciar</button></div>
 </div>
 
 <!-- ══════════════════════════════
@@ -728,99 +728,33 @@ function expJ(){if(!RESULT)return;var a=document.createElement(‘a’);a.href=U
 function expT(){if(!RESULT)return;var t=‘MODEL CARD: ‘+RESULT.model_name+’\nChave: ‘+RESULT.uid+’\nNível: ‘+RESULT.criticality_level+’\nPontuação: ‘+((RESULT.weighted_score||0).toFixed(2))+’\n\n’+RESULT.description+’\n\n’+RESULT.validation_scope;var a=document.createElement(‘a’);a.href=URL.createObjectURL(new Blob([t],{type:‘text/plain’}));a.download=‘mc-’+(RESULT.uid||‘mc’)+’.txt’;document.body.appendChild(a);a.click();document.body.removeChild(a);}
 
 // ════════════════════════════════════════════════
-// BOOTSTRAP — padrão Risk Intel
-// Todos os botões via addEventListener, NUNCA onclick inline
+// BOOTSTRAP — delegação de eventos no document
+// Funciona independente do timing do DOM
 // ════════════════════════════════════════════════
-function bootstrap(){
-
-// Botão T1: Próximo
-var b1=G(‘btn-t1’);
-if(b1){
-function f1(e){if(e)e.preventDefault();if(validarT1())ir(‘t2’);}
-b1.addEventListener(‘click’,    f1, false);
-b1.addEventListener(‘touchend’, f1, false);
-b1.addEventListener(‘touchstart’,function(){},{passive:true});
+function doClick(id){
+if(id===‘btn-t0’){ir(‘t1’);}
+else if(id===‘btn-t1’){if(validarT1())ir(‘t2’);}
+else if(id===‘btn-t2’){iniciarAnalise();}
+else if(id===‘btn-voltar’){ir(‘t1’);}
+else if(id===‘btn-novo’){FILES=[];LINKS=[];SOURCES=[];RESULT=null;DECISION=null;ir(‘t0’);}
+else if(id===‘btn-eye’){var i=G(‘api-key’);if(i)i.type=(i.type===‘password’?‘text’:‘password’);}
+else if(id===‘btn-ladd’){addLink();}
+else if(id===‘btn-rev’){finalizarRevisao();}
 }
 
-// Botão T2: Executar
-var b2=G(‘btn-t2’);
-if(b2){
-function f2(e){if(e)e.preventDefault();iniciarAnalise();}
-b2.addEventListener(‘click’,    f2, false);
-b2.addEventListener(‘touchend’, f2, false);
-b2.addEventListener(‘touchstart’,function(){},{passive:true});
-}
-
-// Botão Voltar
-var bv=G(‘btn-voltar’);
-if(bv){
-function fv(e){if(e)e.preventDefault();ir(‘t1’);}
-bv.addEventListener(‘click’,    fv, false);
-bv.addEventListener(‘touchend’, fv, false);
-bv.addEventListener(‘touchstart’,function(){},{passive:true});
-}
-
-// Botão Novo
-var bn=G(‘btn-novo’);
-if(bn){
-function fn(e){
-if(e)e.preventDefault();
-FILES=[];LINKS=[];SOURCES=[];RESULT=null;DECISION=null;
-ir(‘t1’);
-}
-bn.addEventListener(‘click’,    fn, false);
-bn.addEventListener(‘touchend’, fn, false);
-bn.addEventListener(‘touchstart’,function(){},{passive:true});
-}
-
-// Eye
-var be=G(‘btn-eye’);
-if(be){
-function fe(e){if(e)e.preventDefault();var i=G(‘api-key’);if(i)i.type=(i.type===‘password’?‘text’:‘password’);}
-be.addEventListener(‘click’,    fe, false);
-be.addEventListener(‘touchend’, fe, false);
-be.addEventListener(‘touchstart’,function(){},{passive:true});
-}
-
-// Add link
-var bl=G(‘btn-ladd’);
-if(bl){
-function fl(e){if(e)e.preventDefault();addLink();}
-bl.addEventListener(‘click’,    fl, false);
-bl.addEventListener(‘touchend’, fl, false);
-bl.addEventListener(‘touchstart’,function(){},{passive:true});
-}
-
-// Botão T0: Iniciar
-var b0=G(‘btn-t0’);
-if(b0){
-function f0(e){if(e)e.preventDefault();ir(‘t1’);}
-b0.addEventListener(‘click’,    f0, false);
-b0.addEventListener(‘touchend’, f0, false);
-b0.addEventListener(‘touchstart’,function(){},{passive:true});
-}
-
-// Botão Registrar Revisão (dinâmico — usa delegação de eventos no document)
 document.addEventListener(‘click’, function(e){
-if(e.target && e.target.id===‘btn-rev’){
-e.preventDefault();
-finalizarRevisao();
-}
+var t=e.target;
+if(t&&t.id) doClick(t.id);
 });
 document.addEventListener(‘touchend’, function(e){
-if(e.target && e.target.id===‘btn-rev’){
-e.preventDefault();
-finalizarRevisao();
-}
-});
-}
+var t=e.target;
+if(t&&t.id) doClick(t.id);
+},{passive:false});
 
 // Padrão Risk Intel
 if(document.readyState===‘loading’){
-document.addEventListener(‘DOMContentLoaded’,bootstrap);
-}else{
-bootstrap();
-}
+document.addEventListener(‘DOMContentLoaded’,function(){});
+}else{}
 </script>
 
 </body>
