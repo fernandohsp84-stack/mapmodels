@@ -297,24 +297,60 @@ function iniciar(){
   if(ld) ld.style.display='block';
   if(lt) lt.textContent='Iniciando analise...';
   setTimeout(function(){
-    executar().catch(function(e){
-      console.error('executar error:',e);
-      if(ld) ld.style.display='none';
-      if(btn) btn.style.display='block';
-      alert('Erro na analise: '+e.message);
-    });
+    executar();
   },100);
 }
 
-async function executar(){
-  // Validação e display já feitos por iniciar()
-  var steps=['Agente de Ingestão: lendo fontes...','Agente RAG: extraindo informações...','Agente Classificador: identificando técnica...','Agente de Criticidade: calculando dimensões...','Síntese: gerando Model Card...'],i;
-  for(i=0;i<steps.length;i++){G('loading-txt').textContent=steps[i];await wait(i===1?1800:1200);}
-  RESULT=GV('api-key')?await callAPI(GV('api-key')):makeDemo();
-  G('loading').style.display='none';
-  var sec=G('sec-mc');sec.style.display='block';
-  renderMC(RESULT);
-  sec.scrollIntoView({behavior:'smooth'});
+function executar(){
+  // Sem async/await no fluxo principal — setTimeout encadeado
+  var steps=[
+    'Agente de Ingestão: lendo fontes...',
+    'Agente RAG: extraindo informações...',
+    'Agente Classificador: identificando técnica...',
+    'Agente de Criticidade: calculando dimensões...',
+    'Síntese: gerando Model Card...'
+  ];
+  var delays=[0,1200,1800,1200,1200,1200];
+  var total=0;
+  for(var i=0;i<steps.length;i++){
+    total+=delays[i];
+    (function(step,t){
+      setTimeout(function(){
+        var lt=document.getElementById('loading-txt');
+        if(lt) lt.textContent=step;
+      },t);
+    })(steps[i],total);
+  }
+  // Após todos os steps, chamar API
+  setTimeout(function(){
+    var lt=document.getElementById('loading-txt');
+    if(lt) lt.textContent='Finalizando...';
+    var key=GV('api-key');
+    if(key){
+      callAPI(key).then(function(result){
+        mostrarResultado(result);
+      }).catch(function(e){
+        console.error('API error:',e);
+        mostrarResultado(makeDemo());
+      });
+    } else {
+      mostrarResultado(makeDemo());
+    }
+  },total+800);
+}
+
+function mostrarResultado(result){
+  RESULT=result;
+  var ld=document.getElementById('loading');
+  var sec=document.getElementById('sec-mc');
+  if(ld) ld.style.display='none';
+  if(sec){
+    sec.style.display='block';
+    renderMC(RESULT);
+    setTimeout(function(){
+      sec.scrollIntoView({behavior:'smooth'});
+    },100);
+  }
 }
 
 async function callAPI(key){
