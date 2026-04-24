@@ -10,25 +10,17 @@
 body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#F0F2F5;color:#1A1D23;font-size:15px;}
 .tela{display:none;min-height:100vh;padding-bottom:90px;}
 .tela.ativa{display:block;}
-
-/* BOTAO FIXO RODAPE - igual ao que funcionou */
 .btn-fixo{position:fixed;bottom:0;left:0;right:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:#F0F2F5;border-top:1px solid #E0E4EA;z-index:100;}
-.btn-run{display:block;width:100%;padding:16px;background:#005CA9 !important;color:#fff !important;border:none !important;border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-weight:700;font-size:17px;cursor:pointer;-webkit-appearance:none !important;appearance:none !important;opacity:1 !important;-webkit-opacity:1 !important;touch-action:manipulation;outline:none;box-shadow:none;-webkit-tap-highlight-color:rgba(0,0,0,0.1);user-select:none;-webkit-user-select:none;}
+.btn-run{display:block;width:100%;padding:16px;background:#005CA9 !important;color:#fff !important;border:none !important;border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-weight:700;font-size:17px;cursor:pointer;-webkit-appearance:none !important;appearance:none !important;opacity:1 !important;-webkit-opacity:1 !important;touch-action:manipulation;outline:none;-webkit-tap-highlight-color:rgba(0,0,0,0.1);user-select:none;-webkit-user-select:none;}
 .btn-run:active{background:#003F7A !important;}
-
-/* HEADER */
 .hdr{background:#003F7A;padding:14px 16px;display:flex;align-items:center;gap:10px;}
 .hdr-icon{width:30px;height:30px;background:#F47920;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .hdr-name{font-size:17px;font-weight:700;color:#fff;flex:1;}
 .hdr-back{background:rgba(255,255,255,.15);border:none;border-radius:6px;color:#fff;font-size:13px;font-weight:600;padding:7px 12px;cursor:pointer;font-family:inherit;-webkit-appearance:none;touch-action:manipulation;}
-
-/* HERO */
 .hero{background:linear-gradient(160deg,#003F7A,#1A5CA0);padding:28px 20px 24px;text-align:center;}
 .hero-icon{width:60px;height:60px;background:#F47920;border-radius:15px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px;}
 .hero-name{font-size:26px;font-weight:800;color:#fff;letter-spacing:-.4px;}
 .hero-sub{font-size:13px;color:rgba(255,255,255,.65);margin-top:4px;line-height:1.5;}
-
-/* CARDS */
 .wrap{padding:14px 14px 0;}
 .card{background:#fff;border-radius:10px;padding:16px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
 .card-t{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#9BA3B2;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #ECEEF2;}
@@ -42,22 +34,6 @@ textarea{resize:vertical;min-height:70px;}
 .key-row{display:flex;gap:8px;}
 .key-row input{flex:1;}
 .eye{background:#F0F2F5;border:1.5px solid #D0D5DD;border-radius:8px;padding:0 13px;font-size:16px;cursor:pointer;-webkit-appearance:none;flex-shrink:0;touch-action:manipulation;}
-
-/* INFO AGENTES - accordion simples */
-.info-toggle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:2px 0;touch-action:manipulation;}
-.info-toggle-label{font-size:13px;font-weight:600;color:#005CA9;}
-.info-toggle-icon{font-size:18px;color:#005CA9;transition:transform .2s;}
-.info-body{display:none;margin-top:12px;}
-.info-body.aberto{display:block;}
-.ag-item{display:flex;gap:0;margin-bottom:2px;}
-.ag-bar{width:3px;border-radius:3px;margin:0 12px 0 0;flex-shrink:0;}
-.ag-content{padding:8px 0 10px;}
-.ag-num-nome{display:flex;align-items:center;gap:8px;margin-bottom:4px;}
-.ag-num{width:22px;height:22px;border-radius:50%;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.ag-nome{font-size:13px;font-weight:700;color:#1A1D23;}
-.ag-desc{font-size:11px;color:#717A8C;line-height:1.65;padding-left:30px;}
-
-/* TILES */
 .tiles{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;}
 @media(max-width:380px){.tiles{grid-template-columns:1fr 1fr;}}
 .tile{border:1.5px solid #D0D5DD;border-radius:8px;padding:10px 4px;cursor:pointer;text-align:center;background:#fff;touch-action:manipulation;}
@@ -65,19 +41,13 @@ textarea{resize:vertical;min-height:70px;}
 .tile-i{font-size:16px;margin-bottom:3px;}
 .tile-l{font-size:9px;font-weight:600;color:#717A8C;}
 .tile.on .tile-l{color:#005CA9;}
-
-/* UPLOAD */
 .up-label{display:block;width:100%;padding:14px;border:2px dashed #005CA9;border-radius:10px;background:#EBF3FB;color:#005CA9;font-size:13px;font-weight:600;cursor:pointer;text-align:center;margin-bottom:8px;}
 #finp{display:none;}
-
-/* LINKS */
 .link-row{display:flex;gap:8px;margin-bottom:8px;}
 .link-row input{flex:1;}
 .ladd{background:#F0F2F5;border:1.5px solid #D0D5DD;border-radius:8px;padding:0 14px;font-size:14px;font-family:inherit;cursor:pointer;-webkit-appearance:none;color:#005CA9;font-weight:600;white-space:nowrap;touch-action:manipulation;}
 .chip{display:inline-flex;align-items:center;gap:4px;background:#EBF3FB;border:1px solid rgba(0,92,169,.2);border-radius:20px;padding:4px 10px;font-size:12px;color:#005CA9;margin:3px 3px 0 0;}
 .chip-x{background:none;border:none;color:rgba(0,92,169,.5);cursor:pointer;font-size:14px;-webkit-appearance:none;padding:0;touch-action:manipulation;}
-
-/* ANALISE */
 .spin{width:36px;height:36px;border:3px solid #ECEEF2;border-top-color:#005CA9;border-radius:50%;margin:0 auto 14px;animation:sp .8s linear infinite;}
 @keyframes sp{to{transform:rotate(360deg);}}
 .step{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #ECEEF2;opacity:.3;}
@@ -86,8 +56,6 @@ textarea{resize:vertical;min-height:70px;}
 .dot{width:7px;height:7px;border-radius:50%;background:#B8BEC9;flex-shrink:0;}
 .step.on .dot{background:#005CA9;}.step.dn .dot{background:#1B7F4F;}
 .stxt{font-size:13px;font-weight:600;}.ssub{font-size:11px;color:#B8BEC9;margin-top:2px;}
-
-/* MODEL CARD */
 .mc-hd{background:linear-gradient(135deg,#003F7A,#1A6DC4);border-radius:10px;padding:18px;color:#fff;margin-bottom:12px;}
 .mc-id{font-family:monospace;font-size:11px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.12);padding:2px 9px;border-radius:20px;display:inline-block;margin-bottom:8px;}
 .mc-n{font-size:18px;font-weight:700;margin-bottom:3px;}
@@ -127,11 +95,10 @@ textarea{resize:vertical;min-height:70px;}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 @media(max-width:400px){.g2{grid-template-columns:1fr;}}
 </style>
-
 </head>
 <body>
 
-<!-- TELA 1: IDENTIFICACAO -->
+<!-- TELA 1 -->
 
 <div class="tela ativa" id="t1">
   <div class="hero">
@@ -145,103 +112,35 @@ textarea{resize:vertical;min-height:70px;}
     <div class="hero-sub">Catalogacao inteligente de modelos institucionais</div>
   </div>
   <div class="wrap">
-
-```
-<!-- COMO FUNCIONA - accordion -->
-<div class="card">
-  <div class="info-toggle" id="info-toggle">
-    <span class="info-toggle-label">Como funciona? Pipeline de 5 Agentes</span>
-    <span class="info-toggle-icon" id="info-icon">&#9660;</span>
-  </div>
-  <div class="info-body" id="info-body">
-    <p style="font-size:12px;color:#717A8C;line-height:1.6;margin-bottom:12px;">O ModelScan substitui o formulario de autodeclaracao. Os 5 agentes processam sua documentacao em sequencia e geram o Model Card completo.</p>
-
-    <div class="ag-item">
-      <div class="ag-bar" style="background:#005CA9;"></div>
-      <div class="ag-content">
-        <div class="ag-num-nome"><div class="ag-num" style="background:#005CA9;">1</div><div class="ag-nome">Agente de Ingestao</div></div>
-        <div class="ag-desc"><strong>Entrada:</strong> Arquivos, links e contexto.<br><strong>Faz:</strong> Le e extrai conteudo de cada fonte.<br><strong>Entrega ao Ag.2:</strong> Corpus textual consolidado.</div>
+    <div class="card">
+      <div class="card-t">Chave API Anthropic</div>
+      <div class="field">
+        <div class="key-row">
+          <input type="password" id="api-key" placeholder="sk-ant-... (vazio = modo demo)" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">
+          <button class="eye" type="button" id="btn-eye">&#128065;</button>
+        </div>
+        <div style="font-size:11px;color:#9BA3B2;margin-top:5px;">Gere em <a href="https://console.anthropic.com" style="color:#005CA9;">console.anthropic.com</a></div>
       </div>
     </div>
-
-    <div class="ag-item">
-      <div class="ag-bar" style="background:#0D7377;"></div>
-      <div class="ag-content">
-        <div class="ag-num-nome"><div class="ag-num" style="background:#0D7377;">2</div><div class="ag-nome">Agente RAG</div></div>
-        <div class="ag-desc"><strong>Entrada:</strong> Corpus do Ag.1.<br><strong>Faz:</strong> Extrai trechos por categoria: objetivo, inputs, outputs, plataforma, metricas.<br><strong>Entrega ao Ag.3:</strong> Informacoes estruturadas por categoria.</div>
-      </div>
+    <div class="card">
+      <div class="card-t">Dados do Modelo</div>
+      <div class="field"><label>Nome do Modelo <span class="req">*</span></label><input type="text" id="nm" placeholder="ex: Scoring de Credito PF"></div>
+      <div class="field"><label>Area / Superintendencia <span class="req">*</span></label><input type="text" id="ar" placeholder="ex: SUPEC"></div>
+      <div class="field"><label>Model Owner - seu nome <span class="req">*</span></label><input type="text" id="ow" placeholder="Nome completo"></div>
+      <div class="field"><label>Seu e-mail <span class="req">*</span></label><input type="text" id="oe" placeholder="seu@email.com" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false"></div>
     </div>
-
-    <div class="ag-item">
-      <div class="ag-bar" style="background:#1B7F4F;"></div>
-      <div class="ag-content">
-        <div class="ag-num-nome"><div class="ag-num" style="background:#1B7F4F;">3</div><div class="ag-nome">Agente Classificador</div></div>
-        <div class="ag-desc"><strong>Entrada:</strong> Categorias do Ag.2.<br><strong>Faz:</strong> Classifica familia (ML, Estatistico, IA Gen.), tecnica (ex: XGBoost) e framework regulatorio.<br><strong>Entrega ao Ag.4:</strong> Campos family, technique, platform, regulatory.</div>
-      </div>
+    <div class="card">
+      <div class="card-t">Contato Validacao</div>
+      <div class="field"><label>E-mail Validacao</label><input type="text" id="ve" placeholder="validacao@email.com" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false"></div>
+      <div class="field"><label>E-mail Comite (opcional)</label><input type="text" id="ce" placeholder="comite@email.com" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false"></div>
     </div>
-
-    <div class="ag-item">
-      <div class="ag-bar" style="background:#9A6200;"></div>
-      <div class="ag-content">
-        <div class="ag-num-nome"><div class="ag-num" style="background:#9A6200;">4</div><div class="ag-nome">Agente de Criticidade</div></div>
-        <div class="ag-desc"><strong>Entrada:</strong> Classificacao do Ag.3 + corpus.<br><strong>Faz:</strong> Pontua 6 dimensoes D1-D6 (escala 1-5): Impacto Financeiro, Exposicao Regulatoria, Autonomia, Opacidade, Abrangencia, Maturidade.<br><strong>Entrega ao Ag.5:</strong> Scores, nivel N1-N5, controles e escopo de validacao.</div>
-      </div>
-    </div>
-
-    <div class="ag-item">
-      <div class="ag-bar" style="background:#F47920;"></div>
-      <div class="ag-content">
-        <div class="ag-num-nome"><div class="ag-num" style="background:#F47920;">5</div><div class="ag-nome">Geracao do Model Card</div></div>
-        <div class="ag-desc"><strong>Entrada:</strong> Todos os outputs dos Ag.1 a 4.<br><strong>Faz:</strong> Consolida em JSON estruturado com descricao narrativa, tags e indicador de confianca 0-100%.<br><strong>Entrega:</strong> Model Card completo pronto para revisao.</div>
-      </div>
-    </div>
-
-    <div style="background:#FDF5E6;border:1px solid rgba(154,98,0,.2);border-radius:8px;padding:11px 12px;margin-top:8px;">
-      <div style="font-size:10px;font-weight:700;color:#9A6200;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px;">Antes de comecar</div>
-      <div style="font-size:12px;color:#3C4353;line-height:2.0;">
-        &#8226; Documentacao tecnica do modelo (PDF, Word ou link)<br>
-        &#8226; Codigo-fonte ou notebook (opcional, recomendado)<br>
-        &#8226; Chave API Anthropic — console.anthropic.com<br>
-        &#8226; E-mail da Area de Validacao de Modelos
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- FORMULARIO -->
-<div class="card">
-  <div class="card-t">Chave API Anthropic</div>
-  <div class="field">
-    <div class="key-row">
-      <input type="password" id="api-key" placeholder="sk-ant-... (vazio = modo demo)" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">
-      <button class="eye" type="button" id="btn-eye">&#128065;</button>
-    </div>
-    <div style="font-size:11px;color:#9BA3B2;margin-top:5px;">Gere em <a href="https://console.anthropic.com" style="color:#005CA9;">console.anthropic.com</a></div>
-  </div>
-</div>
-
-<div class="card">
-  <div class="card-t">Dados do Modelo</div>
-  <div class="field"><label>Nome do Modelo <span class="req">*</span></label><input type="text" id="nm" placeholder="ex: Scoring de Credito PF"></div>
-  <div class="field"><label>Area / Superintendencia <span class="req">*</span></label><input type="text" id="ar" placeholder="ex: SUPEC"></div>
-  <div class="field"><label>Model Owner - seu nome <span class="req">*</span></label><input type="text" id="ow" placeholder="Nome completo"></div>
-  <div class="field"><label>Seu e-mail <span class="req">*</span></label><input type="text" id="oe" placeholder="seu@email.com" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false"></div>
-</div>
-
-<div class="card">
-  <div class="card-t">Contato Validacao</div>
-  <div class="field"><label>E-mail Validacao</label><input type="text" id="ve" placeholder="validacao@email.com" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false"></div>
-  <div class="field"><label>E-mail Comite (opcional)</label><input type="text" id="ce" placeholder="comite@email.com" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false"></div>
-</div>
-```
-
   </div>
   <div class="btn-fixo">
     <button class="btn-run" type="button" id="btn-t1">Proximo: Fontes &#8594;</button>
   </div>
 </div>
 
-<!-- TELA 2: FONTES -->
+<!-- TELA 2 -->
 
 <div class="tela" id="t2">
   <div class="hdr">
@@ -287,7 +186,7 @@ textarea{resize:vertical;min-height:70px;}
   </div>
 </div>
 
-<!-- TELA 3: ANALISE -->
+<!-- TELA 3 -->
 
 <div class="tela" id="t3">
   <div class="hdr">
@@ -310,7 +209,7 @@ textarea{resize:vertical;min-height:70px;}
   </div>
 </div>
 
-<!-- TELA 4: MODEL CARD -->
+<!-- TELA 4 -->
 
 <div class="tela" id="t4">
   <div class="hdr">
@@ -326,32 +225,20 @@ var FILES=[],LINKS=[],SOURCES=[],RESULT=null,DECISION=null;
 
 function ir(id){
   var all=['t1','t2','t3','t4'],i,el;
-  for(i=0;i<all.length;i++){
-    el=document.getElementById(all[i]);
-    if(el)el.className='tela'+(all[i]===id?' ativa':'');
-  }
+  for(i=0;i<all.length;i++){el=document.getElementById(all[i]);if(el)el.className='tela'+(all[i]===id?' ativa':'');}
   window.scrollTo(0,0);
 }
-
 function GV(id){var e=document.getElementById(id);return(e&&e.value)?e.value.trim():'';}
 function G(id){return document.getElementById(id);}
 function makeUID(){return 'MDL-'+Math.random().toString(36).substr(2,6).toUpperCase();}
-
 function togTile(el){
-  var s=el.getAttribute('data-s');
-  var on=el.className.indexOf('on')>=0;
+  var s=el.getAttribute('data-s'),on=el.className.indexOf('on')>=0,idx=SOURCES.indexOf(s);
   el.className=on?'tile':'tile on';
-  var idx=SOURCES.indexOf(s);
   if(!on){if(idx<0)SOURCES.push(s);}else{if(idx>=0)SOURCES.splice(idx,1);}
 }
-
 function addFiles(fl){
   var i,f,j,found;
-  for(i=0;i<fl.length;i++){
-    f=fl[i];found=false;
-    for(j=0;j<FILES.length;j++){if(FILES[j].name===f.name){found=true;break;}}
-    if(!found)FILES.push(f);
-  }
+  for(i=0;i<fl.length;i++){f=fl[i];found=false;for(j=0;j<FILES.length;j++){if(FILES[j].name===f.name){found=true;break;}}if(!found)FILES.push(f);}
   renderFiles();
 }
 function renderFiles(){
@@ -366,7 +253,6 @@ function renderFiles(){
   G('flist').innerHTML=h;
 }
 function rmF(i){FILES.splice(i,1);renderFiles();}
-
 function addLink(){
   var inp=G('linp'),v=inp.value.trim(),i,found=false;
   if(!v)return;
@@ -376,21 +262,10 @@ function addLink(){
 }
 function renderChips(){
   var h='',i;
-  for(i=0;i<LINKS.length;i++){
-    h+='<span class="chip">'+LINKS[i]+'<button class="chip-x" type="button" onclick="rmL('+i+')">&#215;</button></span>';
-  }
+  for(i=0;i<LINKS.length;i++){h+='<span class="chip">'+LINKS[i]+'<button class="chip-x" type="button" onclick="rmL('+i+')">&#215;</button></span>';}
   G('chips').innerHTML=h;
 }
 function rmL(i){LINKS.splice(i,1);renderChips();}
-
-function toggleInfo(){
-  var body=G('info-body'),icon=G('info-icon');
-  if(!body||!icon)return;
-  var aberto=body.className.indexOf('aberto')>=0;
-  body.className=aberto?'info-body':'info-body aberto';
-  icon.innerHTML=aberto?'&#9660;':'&#9650;';
-}
-
 function validarT1(){
   if(!GV('nm')){alert('Informe o Nome do Modelo.');return false;}
   if(!GV('ar')){alert('Informe a Area.');return false;}
@@ -398,12 +273,9 @@ function validarT1(){
   if(!GV('oe')){alert('Informe seu e-mail.');return false;}
   return true;
 }
-
 function iniciarAnalise(){
   ir('t3');
-  var ids=['s1','s2','s3','s4','s5'];
-  var delays=[0,1500,3000,4500,6000];
-  var i;
+  var ids=['s1','s2','s3','s4','s5'],delays=[0,1500,3000,4500,6000],i;
   for(i=0;i<ids.length;i++){
     (function(cur,prev,delay){
       setTimeout(function(){
@@ -415,55 +287,29 @@ function iniciarAnalise(){
   setTimeout(function(){
     var s5=G('s5');if(s5)s5.className='step dn';
     var key=GV('api-key');
-    if(key){
-      callAPI(key).then(function(r){mostrarMC(r);}).catch(function(){mostrarMC(makeDemo());});
-    }else{
-      setTimeout(function(){mostrarMC(makeDemo());},500);
-    }
+    if(key){callAPI(key).then(function(r){mostrarMC(r);}).catch(function(){mostrarMC(makeDemo());});}
+    else{setTimeout(function(){mostrarMC(makeDemo());},500);}
   },7500);
 }
-
 function mostrarMC(r){RESULT=r;ir('t4');renderMC(r);}
-
-function readTxt(f){
-  return new Promise(function(res,rej){
-    var r=new FileReader();r.onload=function(e){res(e.target.result);};r.onerror=rej;r.readAsText(f);
-  });
-}
-
+function readTxt(f){return new Promise(function(res,rej){var r=new FileReader();r.onload=function(e){res(e.target.result);};r.onerror=rej;r.readAsText(f);});}
 async function callAPI(key){
   var nm=GV('nm'),ar=GV('ar'),ow=GV('ow'),txt='',i;
   for(i=0;i<FILES.length;i++){try{var t=await readTxt(FILES[i]);txt+='\nARQ:'+FILES[i].name+'\n'+t.substring(0,3000);}catch(e){}}
-  var p='Gere Model Card em JSON puro sem markdown.\nModelo:'+nm+'\nArea:'+ar+'\nOwner:'+ow
-    +'\nFontes:'+SOURCES.join(',')+'\nLinks:'+LINKS.join(',')+'\nCtx:'+GV('ctx')+(txt?'\n'+txt:'')
-    +'\nRetorne SOMENTE JSON:\n{"family":"string","technique":"string","description":"string","platform":"string","inputs":"string","outputs":"string","autonomy":"string","regulatory":"string","scores":{"D1":3,"D2":3,"D3":3,"D4":3,"D5":3,"D6":3},"weighted_score":3.0,"criticality_level":"N2","criticality_name":"Alto","tags":["tag"],"controls":[{"text":"texto","type":"crit"}],"validation_scope":"string","confidence":70,"confidence_note":"string"}';
-  var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',
-    headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,messages:[{role:'user',content:p}]})});
+  var p='Gere Model Card em JSON puro sem markdown.\nModelo:'+nm+'\nArea:'+ar+'\nOwner:'+ow+'\nFontes:'+SOURCES.join(',')+'\nLinks:'+LINKS.join(',')+'\nCtx:'+GV('ctx')+(txt?'\n'+txt:'')+'\nRetorne SOMENTE JSON:\n{"family":"string","technique":"string","description":"string","platform":"string","inputs":"string","outputs":"string","autonomy":"string","regulatory":"string","scores":{"D1":3,"D2":3,"D3":3,"D4":3,"D5":3,"D6":3},"weighted_score":3.0,"criticality_level":"N2","criticality_name":"Alto","tags":["tag"],"controls":[{"text":"texto","type":"crit"}],"validation_scope":"string","confidence":70,"confidence_note":"string"}';
+  var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,messages:[{role:'user',content:p}]})});
   var data=await res.json();
   if(data.error)throw new Error(data.error.message);
   var raw=data.content.map(function(b){return b.text||'';}).join('');
   var r=JSON.parse(raw.substring(raw.indexOf('{'),raw.lastIndexOf('}')+1));
   r.model_name=nm;r.model_area=ar;r.model_owner=ow;return r;
 }
-
 function makeDemo(){
-  return{model_name:GV('nm')||'Scoring de Credito PF',model_area:GV('ar')||'SUPEC',model_owner:GV('ow')||'Demo',
-    family:'Machine Learning',technique:'Gradient Boosting (XGBoost)',
-    description:'Modelo para estimacao de probabilidade de default em carteiras PF com alcada automatica ate R$50 mil.',
-    platform:'Python + Databricks',inputs:'Score bureau, historico, renda',outputs:'Score PD (0-1000), faixa risco, limite',
-    autonomy:'Automatico ate R$50 mil',regulatory:'Basileia III / IFRS 9',
-    scores:{D1:4,D2:4,D3:4,D4:3,D5:5,D6:3},weighted_score:3.90,criticality_level:'N1',criticality_name:'Critico',
-    tags:['credito-pf','xgboost','basileia-iii'],
-    controls:[{text:'Monitoramento continuo PSI/KS/Gini',type:'crit'},{text:'Validacao independente anual',type:'crit'},{text:'Analise de vies a cada recalibracao',type:'warn'},{text:'SHAP values para contestacoes',type:'ok'}],
-    validation_scope:'Validacao Profunda N1: revisao conceitual, backtesting 24m, stress test, SHAP.',
-    confidence:72,confidence_note:'Resultado de demonstracao.'};
+  return{model_name:GV('nm')||'Scoring de Credito PF',model_area:GV('ar')||'SUPEC',model_owner:GV('ow')||'Demo',family:'Machine Learning',technique:'Gradient Boosting (XGBoost)',description:'Modelo para estimacao de probabilidade de default em carteiras PF com alcada automatica ate R$50 mil.',platform:'Python + Databricks',inputs:'Score bureau, historico, renda',outputs:'Score PD (0-1000), faixa risco, limite',autonomy:'Automatico ate R$50 mil',regulatory:'Basileia III / IFRS 9',scores:{D1:4,D2:4,D3:4,D4:3,D5:5,D6:3},weighted_score:3.90,criticality_level:'N1',criticality_name:'Critico',tags:['credito-pf','xgboost','basileia-iii'],controls:[{text:'Monitoramento continuo PSI/KS/Gini',type:'crit'},{text:'Validacao independente anual',type:'crit'},{text:'Analise de vies a cada recalibracao',type:'warn'},{text:'SHAP values para contestacoes',type:'ok'}],validation_scope:'Validacao Profunda N1: revisao conceitual, backtesting 24m, stress test, SHAP.',confidence:72,confidence_note:'Resultado de demonstracao.'};
 }
-
 function renderMC(r){
   var id=r.uid||makeUID();r.uid=id;
-  var ts=new Date().toLocaleString('pt-BR');
-  var oe=GV('oe'),ve=GV('ve');
+  var ts=new Date().toLocaleString('pt-BR'),oe=GV('oe'),ve=GV('ve');
   var dm={D1:'D1 Impacto Fin.',D2:'D2 Exp. Reg.',D3:'D3 Autonomia',D4:'D4 Opacidade',D5:'D5 Abrangencia',D6:'D6 Maturidade'};
   var sc=r.scores||{},k,scH='';
   for(k in sc){scH+='<div class="scrow"><div class="scd">'+(dm[k]||k)+'</div><div class="sctrk"><div class="scf" style="width:'+((sc[k]/5)*100)+'%;"></div></div><div class="scv">'+sc[k]+'/5</div></div>';}
@@ -477,112 +323,77 @@ function renderMC(r){
   h+='<div class="card"><div class="sec-lbl">Tags</div><div class="tags">'+tgH+'</div></div>';
   h+='<div class="card"><div class="sec-lbl">Controles Recomendados</div>'+ctH+'</div>';
   h+='<div class="card"><div class="sec-lbl">Escopo de Validacao</div><div class="txt">'+r.validation_scope+'</div></div>';
-  h+='<div class="card"><div class="sec-lbl">Notificacao - Owner</div><div style="font-size:11px;color:#9BA3B2;margin-bottom:6px;">Para: '+oe+'</div><div class="email-pre">Prezado(a) '+r.model_owner+',\n\nCatalogacao concluida!\n\nID: '+id+'\nModelo: '+r.model_name+'\nNivel: '+r.criticality_level+' - '+r.criticality_name+'\nPontuacao: '+((r.weighted_score||0).toFixed(2))+'/5\nGerado: '+ts+'\n\nEquipe ModelScan</div></div>';
-  h+='<div class="card"><div class="sec-lbl">Notificacao - Validacao</div><div style="font-size:11px;color:#9BA3B2;margin-bottom:6px;">Para: '+ve+'</div><div class="email-pre">Equipe de Validacao,\n\nNovo modelo - criticidade '+r.criticality_level+'.\n\nID: '+id+'\nModelo: '+r.model_name+'\nOwner: '+r.model_owner+'\nPontuacao: '+((r.weighted_score||0).toFixed(2))+'/5\n\nModelScan</div></div>';
-  h+='<div class="card"><div class="sec-lbl">Moderacao - Confirmacao</div>';
-  h+='<p style="font-size:12px;color:#717A8C;line-height:1.6;margin-bottom:12px;">Revise os campos acima. Se estiver de acordo, confirme. Se houver divergencias, solicite revisao e edite abaixo.</p>';
+  h+='<div class="card"><div class="sec-lbl">Notificacao Owner</div><div style="font-size:11px;color:#9BA3B2;margin-bottom:6px;">Para: '+oe+'</div><div class="email-pre">Prezado(a) '+r.model_owner+',\n\nCatalogacao concluida!\n\nID: '+id+'\nModelo: '+r.model_name+'\nNivel: '+r.criticality_level+' - '+r.criticality_name+'\nPontuacao: '+((r.weighted_score||0).toFixed(2))+'/5\nGerado: '+ts+'\n\nEquipe ModelScan</div></div>';
+  h+='<div class="card"><div class="sec-lbl">Notificacao Validacao</div><div style="font-size:11px;color:#9BA3B2;margin-bottom:6px;">Para: '+ve+'</div><div class="email-pre">Equipe de Validacao,\n\nNovo modelo - criticidade '+r.criticality_level+'.\n\nID: '+id+'\nModelo: '+r.model_name+'\nOwner: '+r.model_owner+'\nPontuacao: '+((r.weighted_score||0).toFixed(2))+'/5\n\nModelScan</div></div>';
+  h+='<div class="card"><div class="sec-lbl">Confirmacao</div>';
   h+='<div class="dec-row"><button class="dec-btn ap" type="button" id="btn-ap" onclick="setD(\'a\')">&#10003; Confirmo!</button><button class="dec-btn rj" type="button" id="btn-rj" onclick="setD(\'r\')">&#9998; Solicito revisao</button></div>';
-  h+='<div id="painel-revisao" style="display:none;margin-top:14px;border-top:1px solid #ECEEF2;padding-top:14px;">';
-  h+='<div style="font-size:12px;font-weight:700;color:#9A6200;background:#FDF5E6;border:1px solid rgba(154,98,0,.2);border-radius:8px;padding:10px 12px;margin-bottom:12px;">&#9998; Edite os campos com divergencia e preencha a justificativa.</div>';
-  h+='<div class="g2" style="margin-bottom:10px;"><div style="margin:0;"><label style="font-size:11px;font-weight:600;color:#3C4353;display:block;margin-bottom:4px;">Corrigir Familia</label><input type="text" id="r-family" placeholder="'+r.family+'"></div><div style="margin:0;"><label style="font-size:11px;font-weight:600;color:#3C4353;display:block;margin-bottom:4px;">Corrigir Tecnica</label><input type="text" id="r-technique" placeholder="'+r.technique+'"></div></div>';
-  h+='<div class="g2" style="margin-bottom:10px;"><div style="margin:0;"><label style="font-size:11px;font-weight:600;color:#3C4353;display:block;margin-bottom:4px;">Corrigir Nivel</label><select id="r-level" style="width:100%;border:1.5px solid #D0D5DD;border-radius:8px;padding:10px;font-size:14px;-webkit-appearance:none;background:#fff;"><option value="">manter ('+r.criticality_level+')</option><option>N1</option><option>N2</option><option>N3</option><option>N4</option><option>N5</option></select></div><div style="margin:0;"><label style="font-size:11px;font-weight:600;color:#3C4353;display:block;margin-bottom:4px;">Corrigir Plataforma</label><input type="text" id="r-platform" placeholder="'+r.platform+'"></div></div>';
-  h+='<div style="margin-bottom:10px;"><label style="font-size:11px;font-weight:600;color:#3C4353;display:block;margin-bottom:4px;">Corrigir Descricao</label><textarea id="r-desc" style="min-height:60px;" placeholder="'+r.description.substring(0,60)+'..."></textarea></div>';
-
-h+=’<div style="background:#FDF5E6;border:1px solid rgba(154,98,0,.25);border-radius:8px;padding:12px;margin-bottom:10px;"><label style="font-size:12px;font-weight:700;color:#9A6200;display:block;margin-bottom:6px;">Justificativa (obrigatorio)</label><textarea id="r-justif" style="min-height:80px;border-color:rgba(154,98,0,.4);" placeholder="Descreva o que esta divergente, qual o valor correto e por que..."></textarea></div>’;
-h+=’<button type="button" onclick="finalizarRevisao()" style="display:block;width:100%;padding:14px;background:#9A6200 !important;color:#fff !important;border:none !important;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;-webkit-appearance:none !important;touch-action:manipulation;">Registrar Revisao</button>’;
-h+=’</div>’;
-h+=’<div id="ok-box" class="ok-box"></div></div>’;
-h+=’<div class="exp-row"><button class="exp-btn" type="button" onclick="expJ()">↓ JSON</button><button class="exp-btn" type="button" onclick="expT()">↓ TXT</button><button class="exp-btn" type="button" onclick="window.print()">↓ PDF</button></div>’;
-G(‘mc-out’).innerHTML=h;
+  h+='<div id="ok-box" class="ok-box"></div></div>';
+  h+='<div class="exp-row"><button class="exp-btn" type="button" onclick="expJ()">&#8595; JSON</button><button class="exp-btn" type="button" onclick="expT()">&#8595; TXT</button><button class="exp-btn" type="button" onclick="window.print()">&#8595; PDF</button></div>';
+  G('mc-out').innerHTML=h;
 }
-
 function setD(d){
-DECISION=d;
-var ba=G(‘btn-ap’),br=G(‘btn-rj’),pr=G(‘painel-revisao’),ob=G(‘ok-box’);
-if(ba)ba.className=‘dec-btn ap’+(d===‘a’?’ on’:’’);
-if(br)br.className=‘dec-btn rj’+(d===‘r’?’ on’:’’);
-if(pr)pr.style.display=(d===‘r’?‘block’:‘none’);
-if(d===‘a’&&ob){
-var ts=new Date().toLocaleString(‘pt-BR’);
-ob.style.display=‘block’;ob.style.background=’#E6F4EE’;ob.style.color=’#1B7F4F’;ob.style.border=‘1px solid rgba(27,127,79,.3)’;
-ob.innerHTML=’✅ <strong>Confirmado!</strong> Chave: <strong>’+(RESULT&&RESULT.uid||’’)+’</strong><br>Por ‘+(GV(‘ow’)||’’)+’ em ’+ts;
-}else if(ob)ob.style.display=‘none’;
+  DECISION=d;
+  var ba=G('btn-ap'),br=G('btn-rj'),ob=G('ok-box');
+  if(ba)ba.className='dec-btn ap'+(d==='a'?' on':'');
+  if(br)br.className='dec-btn rj'+(d==='r'?' on':'');
+  if(ob&&d==='a'){
+    var ts=new Date().toLocaleString('pt-BR');
+    ob.style.display='block';ob.style.background='#E6F4EE';ob.style.color='#1B7F4F';ob.style.border='1px solid rgba(27,127,79,.3)';
+    ob.innerHTML='&#9989; <strong>Confirmado!</strong> Chave: <strong>'+(RESULT&&RESULT.uid||'')+'</strong><br>Por '+(GV('ow')||'')+' em '+ts;
+  }else if(ob)ob.style.display='none';
 }
+function expJ(){if(!RESULT)return;var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(RESULT,null,2)],{type:'application/json'}));a.download='mc-'+(RESULT.uid||'mc')+'.json';document.body.appendChild(a);a.click();document.body.removeChild(a);}
+function expT(){if(!RESULT)return;var t='MODEL CARD: '+RESULT.model_name+'\nChave: '+RESULT.uid+'\nNivel: '+RESULT.criticality_level+'\nPontuacao: '+((RESULT.weighted_score||0).toFixed(2))+'\n\n'+RESULT.description+'\n\n'+RESULT.validation_scope;var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/plain'}));a.download='mc-'+(RESULT.uid||'mc')+'.txt';document.body.appendChild(a);a.click();document.body.removeChild(a);}
 
-function finalizarRevisao(){
-var just=GV(‘r-justif’);
-if(!just){alert(‘Preencha a Justificativa da Revisao.’);return;}
-var ts=new Date().toLocaleString(‘pt-BR’);
-if(RESULT){
-var fam=GV(‘r-family’),tec=GV(‘r-technique’),lev=GV(‘r-level’),plat=GV(‘r-platform’),desc=GV(‘r-desc’);
-if(fam)RESULT.family=fam;if(tec)RESULT.technique=tec;if(lev)RESULT.criticality_level=lev;if(plat)RESULT.platform=plat;if(desc)RESULT.description=desc;
-RESULT.revisao={timestamp:ts,owner:GV(‘ow’),justificativa:just};
-}
-var ob=G(‘ok-box’);
-if(ob){ob.style.display=‘block’;ob.style.background=’#FDF5E6’;ob.style.color=’#9A6200’;ob.style.border=‘1px solid rgba(154,98,0,.3)’;
-ob.innerHTML=’✎ <strong>Revisao registrada!</strong> Chave: <strong>’+(RESULT&&RESULT.uid||’’)+’</strong><br>Justificativa: “’+just.substring(0,80)+’”<br>Por ‘+(GV(‘ow’)||’’)+’ em ’+ts;}
-}
-
-function expJ(){if(!RESULT)return;var a=document.createElement(‘a’);a.href=URL.createObjectURL(new Blob([JSON.stringify(RESULT,null,2)],{type:‘application/json’}));a.download=‘mc-’+(RESULT.uid||‘mc’)+’.json’;document.body.appendChild(a);a.click();document.body.removeChild(a);}
-function expT(){if(!RESULT)return;var t=‘MODEL CARD: ‘+RESULT.model_name+’\nChave: ‘+RESULT.uid+’\nNivel: ‘+RESULT.criticality_level+’\nPontuacao: ‘+((RESULT.weighted_score||0).toFixed(2))+’\n\n’+RESULT.description+’\n\n’+RESULT.validation_scope;var a=document.createElement(‘a’);a.href=URL.createObjectURL(new Blob([t],{type:‘text/plain’}));a.download=‘mc-’+(RESULT.uid||‘mc’)+’.txt’;document.body.appendChild(a);a.click();document.body.removeChild(a);}
-
-// BOOTSTRAP — padrao Risk Intel exato
+// BOOTSTRAP — padrao Risk Intel
 function bootstrap(){
-var btnT1=document.getElementById(‘btn-t1’);
-if(btnT1){
-function doT1(e){if(e&&e.preventDefault)e.preventDefault();if(validarT1())ir(‘t2’);}
-btnT1.addEventListener(‘click’,    doT1, false);
-btnT1.addEventListener(‘touchend’, doT1, false);
-btnT1.addEventListener(‘touchstart’,function(){},{passive:true});
+  var b1=document.getElementById('btn-t1');
+  if(b1){
+    function f1(e){if(e&&e.preventDefault)e.preventDefault();if(validarT1())ir('t2');}
+    b1.addEventListener('click',f1,false);
+    b1.addEventListener('touchend',f1,false);
+    b1.addEventListener('touchstart',function(){},{passive:true});
+  }
+  var b2=document.getElementById('btn-t2');
+  if(b2){
+    function f2(e){if(e&&e.preventDefault)e.preventDefault();iniciarAnalise();}
+    b2.addEventListener('click',f2,false);
+    b2.addEventListener('touchend',f2,false);
+    b2.addEventListener('touchstart',function(){},{passive:true});
+  }
+  var bv=document.getElementById('btn-voltar');
+  if(bv){
+    function fv(e){if(e&&e.preventDefault)e.preventDefault();ir('t1');}
+    bv.addEventListener('click',fv,false);
+    bv.addEventListener('touchend',fv,false);
+    bv.addEventListener('touchstart',function(){},{passive:true});
+  }
+  var bn=document.getElementById('btn-novo');
+  if(bn){
+    function fn(e){if(e&&e.preventDefault)e.preventDefault();FILES=[];LINKS=[];SOURCES=[];RESULT=null;DECISION=null;ir('t1');}
+    bn.addEventListener('click',fn,false);
+    bn.addEventListener('touchend',fn,false);
+    bn.addEventListener('touchstart',function(){},{passive:true});
+  }
+  var be=document.getElementById('btn-eye');
+  if(be){
+    function fe(e){if(e&&e.preventDefault)e.preventDefault();var i=document.getElementById('api-key');if(i)i.type=(i.type==='password'?'text':'password');}
+    be.addEventListener('click',fe,false);
+    be.addEventListener('touchend',fe,false);
+    be.addEventListener('touchstart',function(){},{passive:true});
+  }
+  var bl=document.getElementById('btn-ladd');
+  if(bl){
+    function fl(e){if(e&&e.preventDefault)e.preventDefault();addLink();}
+    bl.addEventListener('click',fl,false);
+    bl.addEventListener('touchend',fl,false);
+    bl.addEventListener('touchstart',function(){},{passive:true});
+  }
 }
-var btnT2=document.getElementById(‘btn-t2’);
-if(btnT2){
-function doT2(e){if(e&&e.preventDefault)e.preventDefault();iniciarAnalise();}
-btnT2.addEventListener(‘click’,    doT2, false);
-btnT2.addEventListener(‘touchend’, doT2, false);
-btnT2.addEventListener(‘touchstart’,function(){},{passive:true});
-}
-var btnV=document.getElementById(‘btn-voltar’);
-if(btnV){
-function doV(e){if(e&&e.preventDefault)e.preventDefault();ir(‘t1’);}
-btnV.addEventListener(‘click’,    doV, false);
-btnV.addEventListener(‘touchend’, doV, false);
-btnV.addEventListener(‘touchstart’,function(){},{passive:true});
-}
-var btnN=document.getElementById(‘btn-novo’);
-if(btnN){
-function doN(e){if(e&&e.preventDefault)e.preventDefault();FILES=[];LINKS=[];SOURCES=[];RESULT=null;DECISION=null;ir(‘t1’);}
-btnN.addEventListener(‘click’,    doN, false);
-btnN.addEventListener(‘touchend’, doN, false);
-btnN.addEventListener(‘touchstart’,function(){},{passive:true});
-}
-var btnE=document.getElementById(‘btn-eye’);
-if(btnE){
-function doE(e){if(e&&e.preventDefault)e.preventDefault();var i=document.getElementById(‘api-key’);if(i)i.type=(i.type===‘password’?‘text’:‘password’);}
-btnE.addEventListener(‘click’,    doE, false);
-btnE.addEventListener(‘touchend’, doE, false);
-btnE.addEventListener(‘touchstart’,function(){},{passive:true});
-}
-var btnL=document.getElementById(‘btn-ladd’);
-if(btnL){
-function doL(e){if(e&&e.preventDefault)e.preventDefault();addLink();}
-btnL.addEventListener(‘click’,    doL, false);
-btnL.addEventListener(‘touchend’, doL, false);
-btnL.addEventListener(‘touchstart’,function(){},{passive:true});
-}
-var btnInfo=document.getElementById(‘info-toggle’);
-if(btnInfo){
-function doInfo(e){if(e&&e.preventDefault)e.preventDefault();toggleInfo();}
-btnInfo.addEventListener(‘click’,    doInfo, false);
-btnInfo.addEventListener(‘touchend’, doInfo, false);
-btnInfo.addEventListener(‘touchstart’,function(){},{passive:true});
-}
-}
-
-if(document.readyState===‘loading’){
-document.addEventListener(‘DOMContentLoaded’,bootstrap);
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',bootstrap);
 }else{
-bootstrap();
+  bootstrap();
 }
 </script>
 
