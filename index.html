@@ -8,37 +8,49 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#F0F2F5;color:#1A1D23;font-size:15px;}
-
-/* CADA TELA ocupa viewport inteira com padding-bottom para o botão fixo */
 .tela{display:none;min-height:100vh;padding-bottom:80px;}
 .tela.ativa{display:block;}
 
-/* BOTÃO FIXO NO RODAPÉ — fora de qualquer scroll */
-.btn-fixo{
-position:fixed;bottom:0;left:0;right:0;
-padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));
-background:#F0F2F5;border-top:1px solid #E0E4EA;
-z-index:999;
-}
-.btn-fixo button{
-display:block;width:100%;padding:16px;
-background:#005CA9 !important;color:#fff !important;
-border:none !important;border-radius:10px;
-font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-font-weight:700;font-size:17px;cursor:pointer;
--webkit-appearance:none !important;appearance:none !important;
-opacity:1 !important;-webkit-opacity:1 !important;
-touch-action:manipulation;outline:none;
--webkit-tap-highlight-color:rgba(0,0,0,0.1);
-user-select:none;-webkit-user-select:none;
-}
+/* BOTÃO FIXO RODAPÉ */
+.btn-fixo{position:fixed;bottom:0;left:0;right:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:#F0F2F5;border-top:1px solid #E0E4EA;z-index:100;}
+.btn-fixo button{display:block;width:100%;padding:16px;background:#005CA9 !important;color:#fff !important;border:none !important;border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-weight:700;font-size:17px;cursor:pointer;-webkit-appearance:none !important;appearance:none !important;opacity:1 !important;touch-action:manipulation;outline:none;-webkit-tap-highlight-color:rgba(0,0,0,0.1);user-select:none;-webkit-user-select:none;}
 .btn-fixo button:active{background:#003F7A !important;}
 
+/* BOTÃO ? AJUDA — fixo topo direito */
+.btn-ajuda{position:fixed;top:14px;right:16px;z-index:200;width:36px;height:36px;background:#F47920;border:none;border-radius:50%;color:#fff;font-size:16px;font-weight:700;cursor:pointer;-webkit-appearance:none;touch-action:manipulation;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(244,121,32,.4);}
+
+/* PAINEL AJUDA */
+.ajuda-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;}
+.ajuda-overlay.on{display:block;}
+.ajuda-panel{position:fixed;bottom:0;left:0;right:0;background:#fff;border-radius:18px 18px 0 0;max-height:90vh;overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:301;padding:0 0 40px;}
+.ajuda-handle{width:36px;height:4px;background:#D0D5DD;border-radius:2px;margin:12px auto 0;}
+.ajuda-hdr{background:linear-gradient(135deg,#003F7A,#1A5CA0);padding:20px 16px 16px;color:#fff;margin-bottom:0;}
+.ajuda-close{float:right;background:rgba(255,255,255,.15);border:none;border-radius:50%;width:28px;height:28px;color:#fff;font-size:18px;cursor:pointer;-webkit-appearance:none;touch-action:manipulation;display:flex;align-items:center;justify-content:center;}
+.ajuda-title{font-size:18px;font-weight:800;margin-bottom:4px;}
+.ajuda-sub{font-size:12px;color:rgba(255,255,255,.7);}
+.ajuda-body{padding:16px;}
+.ajuda-sec{background:#fff;border-radius:10px;border:1px solid #ECEEF2;padding:14px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+.ajuda-sec-t{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#9BA3B2;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #ECEEF2;}
+.ag{display:flex;gap:0;margin-bottom:2px;}
+.ag-line{width:3px;border-radius:3px;margin:0 12px 0 10px;flex-shrink:0;}
+.ag-body{padding:8px 0 12px;}
+.ag-hdr{display:flex;align-items:center;gap:8px;margin-bottom:4px;}
+.ag-num{width:22px;height:22px;border-radius:50%;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ag-nome{font-size:13px;font-weight:700;color:#1A1D23;}
+.ag-txt{font-size:11px;color:#717A8C;line-height:1.65;padding-left:30px;}
+.ag-txt strong{color:#3C4353;}
+
 /* HEADER */
-.hdr{background:#003F7A;padding:14px 16px;display:flex;align-items:center;gap:10px;}
-.hdr-icon{width:32px;height:32px;background:#F47920;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.hdr{background:#003F7A;padding:14px 52px 14px 16px;display:flex;align-items:center;gap:10px;}
+.hdr-icon{width:30px;height:30px;background:#F47920;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .hdr-name{font-size:17px;font-weight:700;color:#fff;flex:1;}
 .hdr-back{background:rgba(255,255,255,.15);border:none;border-radius:6px;color:#fff;font-size:13px;font-weight:600;padding:7px 12px;cursor:pointer;font-family:inherit;-webkit-appearance:none;touch-action:manipulation;}
+
+/* HERO TELA 1 */
+.hero{background:linear-gradient(160deg,#003F7A,#1A5CA0);padding:28px 20px 24px 20px;text-align:center;}
+.hero-icon{width:60px;height:60px;background:#F47920;border-radius:15px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px;}
+.hero-name{font-size:26px;font-weight:800;color:#fff;letter-spacing:-.4px;}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.65);margin-top:4px;line-height:1.5;}
 
 /* CARDS */
 .wrap{padding:14px 14px 0;}
@@ -48,11 +60,7 @@ user-select:none;-webkit-user-select:none;
 .field:last-child{margin-bottom:0;}
 label{display:block;font-size:13px;font-weight:600;color:#3C4353;margin-bottom:5px;}
 .req{color:#F47920;}
-input[type=text],input[type=password],textarea,select{
-width:100%;border:1.5px solid #D0D5DD;border-radius:8px;
-padding:12px;font-size:15px;color:#1A1D23;background:#fff;
-font-family:inherit;-webkit-appearance:none;outline:none;display:block;
-}
+input[type=text],input[type=password],textarea,select{width:100%;border:1.5px solid #D0D5DD;border-radius:8px;padding:12px;font-size:15px;color:#1A1D23;background:#fff;font-family:inherit;-webkit-appearance:none;outline:none;display:block;}
 input:focus,textarea:focus{border-color:#005CA9;}
 textarea{resize:vertical;min-height:70px;}
 .key-row{display:flex;gap:8px;}
@@ -69,7 +77,7 @@ textarea{resize:vertical;min-height:70px;}
 .tile.on .tile-l{color:#005CA9;}
 
 /* UPLOAD */
-#finp-label{display:block;width:100%;padding:14px;border:2px dashed #005CA9;border-radius:10px;background:#EBF3FB;color:#005CA9;font-size:13px;font-weight:600;cursor:pointer;text-align:center;margin-bottom:8px;}
+.up-label{display:block;width:100%;padding:14px;border:2px dashed #005CA9;border-radius:10px;background:#EBF3FB;color:#005CA9;font-size:13px;font-weight:600;cursor:pointer;text-align:center;margin-bottom:8px;}
 #finp{display:none;}
 
 /* LINKS */
@@ -87,8 +95,7 @@ textarea{resize:vertical;min-height:70px;}
 .step.on{opacity:1;}.step.dn{opacity:.6;}
 .dot{width:7px;height:7px;border-radius:50%;background:#B8BEC9;flex-shrink:0;}
 .step.on .dot{background:#005CA9;}.step.dn .dot{background:#1B7F4F;}
-.stxt{font-size:13px;font-weight:600;}
-.ssub{font-size:11px;color:#B8BEC9;margin-top:2px;}
+.stxt{font-size:13px;font-weight:600;}.ssub{font-size:11px;color:#B8BEC9;margin-top:2px;}
 
 /* MODEL CARD */
 .mc-hd{background:linear-gradient(135deg,#003F7A,#1A6DC4);border-radius:10px;padding:18px;color:#fff;margin-bottom:12px;}
@@ -110,8 +117,7 @@ textarea{resize:vertical;min-height:70px;}
 .scf{height:100%;border-radius:3px;background:#005CA9;}
 .scv{font-size:11px;color:#B8BEC9;width:24px;text-align:right;flex-shrink:0;}
 .sctot{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#EBF3FB;border-radius:6px;margin-top:8px;}
-.sctot-l{font-size:12px;font-weight:700;color:#005CA9;}
-.sctot-v{font-size:20px;font-weight:800;color:#005CA9;}
+.sctot-l{font-size:12px;font-weight:700;color:#005CA9;}.sctot-v{font-size:20px;font-weight:800;color:#005CA9;}
 .tags{display:flex;flex-wrap:wrap;gap:5px;}
 .tag{background:#ECEEF2;border-radius:20px;padding:3px 9px;font-size:11px;color:#717A8C;}
 .ci{padding:9px 11px;border-radius:6px;border-left:3px solid;font-size:13px;color:#3C4353;line-height:1.5;margin-bottom:5px;}
@@ -124,134 +130,118 @@ textarea{resize:vertical;min-height:70px;}
 .dec-btn{flex:1;padding:12px;border-radius:8px;border:1.5px solid #D0D5DD;background:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;-webkit-appearance:none;color:#717A8C;touch-action:manipulation;}
 .dec-btn.ap.on{border-color:#1B7F4F;background:#E6F4EE;color:#1B7F4F;}
 .dec-btn.rj.on{border-color:#9A6200;background:#FDF5E6;color:#9A6200;}
-.ok-box{display:none;background:#E6F4EE;border:1px solid rgba(27,127,79,.3);border-radius:10px;padding:14px;margin-top:12px;font-size:14px;color:#1B7F4F;font-weight:600;line-height:1.6;}
+.ok-box{display:none;border-radius:10px;padding:14px;margin-top:12px;font-size:14px;font-weight:600;line-height:1.6;}
 .exp-row{display:flex;gap:8px;margin-top:12px;padding-bottom:16px;}
 .exp-btn{flex:1;padding:10px;background:#fff;color:#3C4353;border:1.5px solid #D0D5DD;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;-webkit-appearance:none;touch-action:manipulation;}
 .sec-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#9BA3B2;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #ECEEF2;}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 @media(max-width:400px){.g2{grid-template-columns:1fr;}}
-
-/* HERO TELA 1 */
-.hero{background:linear-gradient(160deg,#003F7A,#1A5CA0);padding:28px 20px 24px;text-align:center;}
-.hero-icon{width:56px;height:56px;background:#F47920;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:10px;}
-.hero-name{font-size:24px;font-weight:800;color:#fff;letter-spacing:-.3px;}
-.hero-sub{font-size:13px;color:rgba(255,255,255,.65);margin-top:4px;}
 </style>
 
 </head>
 <body>
 
-<!-- ══════════════════════════════
-     TELA 0 — APRESENTAÇÃO
-══════════════════════════════ -->
+<!-- BOTÃO ? AJUDA -->
 
-<div class="tela ativa" id="t0">
-  <div style="background:linear-gradient(160deg,#003F7A,#1A5CA0);padding:32px 20px 24px;text-align:center;">
-    <div style="width:64px;height:64px;background:#F47920;border-radius:16px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px;">
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <rect x="2" y="2" width="28" height="28" rx="6" stroke="white" stroke-width="2.5" fill="none"/>
-        <path d="M7 16h18M16 7v18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-      </svg>
+<button class="btn-ajuda" id="btn-ajuda" type="button">?</button>
+
+<!-- PAINEL AJUDA -->
+
+<div class="ajuda-overlay" id="ajuda-overlay">
+  <div class="ajuda-panel">
+    <div class="ajuda-handle"></div>
+    <div class="ajuda-hdr">
+      <button class="ajuda-close" id="btn-fecha-ajuda" type="button">&#215;</button>
+      <div class="ajuda-title">Como funciona o ModelScan</div>
+      <div class="ajuda-sub">Pipeline de 5 agentes de IA em sequência</div>
     </div>
-    <div style="font-size:26px;font-weight:800;color:#fff;letter-spacing:-.4px;margin-bottom:6px;">ModelScan</div>
-    <div style="font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;">Catalogação inteligente de modelos institucionais<br>com pipeline de 5 agentes de IA</div>
-  </div>
-  <div class="wrap">
+    <div class="ajuda-body">
 
 ```
-<div class="card">
-  <div class="card-t">O que é o ModelScan?</div>
-  <p class="txt" style="margin-bottom:10px;">O ModelScan <strong style="color:#1A1D23;">substitui o formulário de autodeclaração</strong> por um processo guiado e assistido por IA. Você informa onde está a documentação do modelo — arquivos, links ou código — e o sistema gera o <strong style="color:#1A1D23;">Model Card completo</strong> automaticamente, incluindo classificação técnica e nível de criticidade.</p>
-  <div style="background:#EBF3FB;border-radius:8px;padding:11px 14px;font-size:13px;color:#005CA9;"><strong>Tempo estimado:</strong> 5 a 20 minutos por modelo.</div>
-</div>
-
-<div class="card">
-  <div class="card-t">Pipeline de 5 Agentes de IA</div>
-  <div style="display:flex;flex-direction:column;gap:0;">
-
-    <div style="display:flex;gap:0;align-items:stretch;">
-      <div style="width:3px;background:#005CA9;border-radius:3px;margin:0 14px 0 12px;flex-shrink:0;"></div>
-      <div style="padding:10px 0 10px;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-          <div style="width:24px;height:24px;background:#005CA9;border-radius:50%;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
-          <div style="font-size:13px;font-weight:700;color:#1A1D23;">Agente de Ingestão</div>
-        </div>
-        <div style="font-size:12px;color:#717A8C;line-height:1.6;padding-left:32px;"><strong>Entrada:</strong> Arquivos, links e contexto adicional.<br><strong>Faz:</strong> Lê e extrai até 3.000 caracteres por arquivo, consolida todas as fontes em um corpus textual estruturado.<br><strong>Entrega para o próximo:</strong> Corpus completo com identificação de cada fonte.</div>
-      </div>
-    </div>
-
-    <div style="display:flex;gap:0;align-items:stretch;">
-      <div style="width:3px;background:#0D7377;border-radius:3px;margin:0 14px 0 12px;flex-shrink:0;"></div>
-      <div style="padding:10px 0 10px;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-          <div style="width:24px;height:24px;background:#0D7377;border-radius:50%;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
-          <div style="font-size:13px;font-weight:700;color:#1A1D23;">Agente RAG</div>
-        </div>
-        <div style="font-size:12px;color:#717A8C;line-height:1.6;padding-left:32px;"><strong>Entrada:</strong> Corpus do Agente 1 + campos do formulário.<br><strong>Faz:</strong> Extrai trechos relevantes por categoria: objetivo, variáveis de entrada/saída, plataforma, métricas de performance.<br><strong>Entrega para o próximo:</strong> Conjunto estruturado de informações por categoria.</div>
-      </div>
-    </div>
-
-    <div style="display:flex;gap:0;align-items:stretch;">
-      <div style="width:3px;background:#1B7F4F;border-radius:3px;margin:0 14px 0 12px;flex-shrink:0;"></div>
-      <div style="padding:10px 0 10px;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-          <div style="width:24px;height:24px;background:#1B7F4F;border-radius:50%;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
-          <div style="font-size:13px;font-weight:700;color:#1A1D23;">Agente Classificador</div>
-        </div>
-        <div style="font-size:12px;color:#717A8C;line-height:1.6;padding-left:32px;"><strong>Entrada:</strong> Categorias estruturadas do Agente 2.<br><strong>Faz:</strong> Classifica família (ML, Estatístico, Matemático/Financeiro, IA Gen.), técnica específica (ex: XGBoost, LSTM), plataforma e framework regulatório.<br><strong>Entrega para o próximo:</strong> Campos family, technique, platform, regulatory.</div>
-      </div>
-    </div>
-
-    <div style="display:flex;gap:0;align-items:stretch;">
-      <div style="width:3px;background:#9A6200;border-radius:3px;margin:0 14px 0 12px;flex-shrink:0;"></div>
-      <div style="padding:10px 0 10px;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-          <div style="width:24px;height:24px;background:#9A6200;border-radius:50%;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div>
-          <div style="font-size:13px;font-weight:700;color:#1A1D23;">Agente de Criticidade</div>
-        </div>
-        <div style="font-size:12px;color:#717A8C;line-height:1.6;padding-left:32px;"><strong>Entrada:</strong> Classificação do Ag.3 + corpus do Ag.2.<br><strong>Faz:</strong> Pontua 6 dimensões (D1 a D6, escala 1-5): Impacto Financeiro, Exposição Regulatória, Autonomia, Opacidade, Abrangência, Maturidade. Calcula média ponderada e nível N1–N5.<br><strong>Entrega para o próximo:</strong> Scores D1-D6, weighted_score, criticality_level, controles e escopo de validação.</div>
-      </div>
-    </div>
-
-    <div style="display:flex;gap:0;align-items:stretch;">
-      <div style="width:3px;background:#F47920;border-radius:3px;margin:0 14px 0 12px;flex-shrink:0;"></div>
-      <div style="padding:10px 0 10px;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-          <div style="width:24px;height:24px;background:#F47920;border-radius:50%;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">5</div>
-          <div style="font-size:13px;font-weight:700;color:#1A1D23;">Agente de Geração do Model Card</div>
-        </div>
-        <div style="font-size:12px;color:#717A8C;line-height:1.6;padding-left:32px;"><strong>Entrada:</strong> Todos os outputs dos Agentes 1 a 4.<br><strong>Faz:</strong> Consolida tudo em um JSON estruturado. Gera descrição narrativa, tags semânticas, rascunhos de notificação e indicador de confiança (0–100%).<br><strong>Entrega:</strong> Model Card completo com 18 campos prontos para revisão.</div>
-      </div>
-    </div>
-
+  <div class="ajuda-sec">
+    <div class="ajuda-sec-t">O que é</div>
+    <p style="font-size:13px;color:#3C4353;line-height:1.7;">O ModelScan <strong>substitui o formulário de autodeclaração</strong> por um processo guiado por IA. Você informa onde está a documentação do modelo e os agentes leem, classificam e geram o <strong>Model Card completo</strong> automaticamente — incluindo nível de criticidade N1 a N5.</p>
   </div>
-</div>
 
-<div class="card" style="background:#FDF5E6;">
-  <div class="card-t" style="color:#9A6200;">Antes de começar</div>
-  <div style="font-size:13px;color:#3C4353;line-height:2.1;">
-    &#8226; Documentação técnica do modelo (PDF, Word ou link)<br>
-    &#8226; Código-fonte ou notebook (opcional, recomendado)<br>
-    &#8226; Chave API Anthropic — <a href="https://console.anthropic.com" style="color:#005CA9;">console.anthropic.com</a><br>
-    &#8226; E-mail da Área de Validação de Modelos
+  <div class="ajuda-sec">
+    <div class="ajuda-sec-t">Pipeline de 5 Agentes</div>
+
+    <div class="ag">
+      <div class="ag-line" style="background:#005CA9;"></div>
+      <div class="ag-body">
+        <div class="ag-hdr"><div class="ag-num" style="background:#005CA9;">1</div><div class="ag-nome">Agente de Ingestão</div></div>
+        <div class="ag-txt"><strong>Entrada:</strong> Arquivos, links e contexto.<br><strong>Faz:</strong> Lê e extrai até 3.000 chars por arquivo. Consolida todas as fontes.<br><strong>Entrega:</strong> Corpus textual estruturado para o Ag. 2.</div>
+      </div>
+    </div>
+
+    <div class="ag">
+      <div class="ag-line" style="background:#0D7377;"></div>
+      <div class="ag-body">
+        <div class="ag-hdr"><div class="ag-num" style="background:#0D7377;">2</div><div class="ag-nome">Agente RAG</div></div>
+        <div class="ag-txt"><strong>Entrada:</strong> Corpus do Ag. 1 + campos do formulário.<br><strong>Faz:</strong> Extrai trechos por categoria: objetivo, inputs/outputs, plataforma, métricas.<br><strong>Entrega:</strong> Conjunto estruturado por categoria para o Ag. 3.</div>
+      </div>
+    </div>
+
+    <div class="ag">
+      <div class="ag-line" style="background:#1B7F4F;"></div>
+      <div class="ag-body">
+        <div class="ag-hdr"><div class="ag-num" style="background:#1B7F4F;">3</div><div class="ag-nome">Agente Classificador</div></div>
+        <div class="ag-txt"><strong>Entrada:</strong> Categorias do Ag. 2.<br><strong>Faz:</strong> Classifica família (ML, Estatístico, Mat./Fin., IA Gen.), técnica (ex: XGBoost), plataforma e framework regulatório.<br><strong>Entrega:</strong> Campos family, technique, platform, regulatory para o Ag. 4.</div>
+      </div>
+    </div>
+
+    <div class="ag">
+      <div class="ag-line" style="background:#9A6200;"></div>
+      <div class="ag-body">
+        <div class="ag-hdr"><div class="ag-num" style="background:#9A6200;">4</div><div class="ag-nome">Agente de Criticidade</div></div>
+        <div class="ag-txt"><strong>Entrada:</strong> Classificação do Ag. 3 + corpus do Ag. 2.<br><strong>Faz:</strong> Pontua 6 dimensões (D1–D6, escala 1–5): Impacto Financeiro, Exposição Regulatória, Autonomia, Opacidade, Abrangência, Maturidade.<br><strong>Entrega:</strong> Scores D1–D6, weighted_score, nível N1–N5, controles e escopo de validação para o Ag. 5.</div>
+      </div>
+    </div>
+
+    <div class="ag">
+      <div class="ag-line" style="background:#F47920;"></div>
+      <div class="ag-body">
+        <div class="ag-hdr"><div class="ag-num" style="background:#F47920;">5</div><div class="ag-nome">Geração do Model Card</div></div>
+        <div class="ag-txt"><strong>Entrada:</strong> Todos os outputs dos Ag. 1 a 4.<br><strong>Faz:</strong> Consolida em JSON estruturado. Gera descrição narrativa, tags, notificações e indicador de confiança (0–100%).<br><strong>Entrega:</strong> Model Card completo com 18 campos para revisão e exportação.</div>
+      </div>
+    </div>
   </div>
+
+  <div class="ajuda-sec">
+    <div class="ajuda-sec-t">Níveis de Criticidade</div>
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;background:#FBECEC;border-radius:7px;border-left:3px solid #B83232;"><span style="font-weight:800;color:#B83232;font-size:13px;width:24px;">N1</span><span style="font-size:12px;color:#3C4353;">Crítico — alto impacto, uso automatizado em larga escala</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;background:#FEF3E8;border-radius:7px;border-left:3px solid #F47920;"><span style="font-weight:800;color:#F47920;font-size:13px;width:24px;">N2</span><span style="font-size:12px;color:#3C4353;">Alto — impacto moderado-alto, alguma automação</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;background:#FDF5E6;border-radius:7px;border-left:3px solid #9A6200;"><span style="font-weight:800;color:#9A6200;font-size:13px;width:24px;">N3</span><span style="font-size:12px;color:#3C4353;">Médio — uso assistido por analista</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;background:#E6F4EE;border-radius:7px;border-left:3px solid #1B7F4F;"><span style="font-weight:800;color:#1B7F4F;font-size:13px;width:24px;">N4</span><span style="font-size:12px;color:#3C4353;">Baixo — impacto moderado, uso informativo</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;background:#EBF3FB;border-radius:7px;border-left:3px solid #005CA9;"><span style="font-weight:800;color:#005CA9;font-size:13px;width:24px;">N5</span><span style="font-size:12px;color:#3C4353;">Mínimo — subsídio analítico, impacto muito baixo</span></div>
+    </div>
+  </div>
+
+  <div class="ajuda-sec" style="background:#FDF5E6;border-color:rgba(154,98,0,.2);">
+    <div class="ajuda-sec-t" style="color:#9A6200;">Antes de começar</div>
+    <div style="font-size:13px;color:#3C4353;line-height:2.1;">
+      &#8226; Documentação técnica do modelo (PDF, Word ou link)<br>
+      &#8226; Código-fonte ou notebook (opcional, recomendado)<br>
+      &#8226; Chave API Anthropic — console.anthropic.com<br>
+      &#8226; E-mail da Área de Validação de Modelos
+    </div>
+  </div>
+
 </div>
 ```
 
   </div>
-  <div class="btn-fixo"><button type="button" id="btn-t0">Iniciar</button></div>
 </div>
 
-<!-- ══════════════════════════════
-     TELA 1 — IDENTIFICAÇÃO
-══════════════════════════════ -->
+<!-- ══ TELA 1: IDENTIFICAÇÃO ══ -->
 
-<div class="tela" id="t1">
+<div class="tela ativa" id="t1">
   <div class="hero">
     <div class="hero-icon">
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <rect x="1" y="1" width="26" height="26" rx="5" stroke="white" stroke-width="2" fill="none"/>
-        <path d="M6 14h16M14 6v16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <rect x="2" y="2" width="26" height="26" rx="6" stroke="white" stroke-width="2.5" fill="none"/>
+        <path d="M7 15h16M15 7v16" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
       </svg>
     </div>
     <div class="hero-name">ModelScan</div>
@@ -270,58 +260,45 @@ textarea{resize:vertical;min-height:70px;}
     </div>
     <div class="card">
       <div class="card-t">Dados do Modelo</div>
-      <div class="field"><label>Nome do Modelo <span class="req">*</span></label>
-        <input type="text" id="nm" placeholder="ex: Scoring de Crédito PF"></div>
-      <div class="field"><label>Área / Superintendência <span class="req">*</span></label>
-        <input type="text" id="ar" placeholder="ex: SUPEC"></div>
-      <div class="field"><label>Model Owner — seu nome <span class="req">*</span></label>
-        <input type="text" id="ow" placeholder="Nome completo"></div>
-      <div class="field"><label>Seu e-mail <span class="req">*</span></label>
-        <input type="text" id="oe" placeholder="seu@email.com" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false"></div>
+      <div class="field"><label>Nome do Modelo <span class="req">*</span></label><input type="text" id="nm" placeholder="ex: Scoring de Crédito PF"></div>
+      <div class="field"><label>Área / Superintendência <span class="req">*</span></label><input type="text" id="ar" placeholder="ex: SUPEC"></div>
+      <div class="field"><label>Model Owner — seu nome <span class="req">*</span></label><input type="text" id="ow" placeholder="Nome completo"></div>
+      <div class="field"><label>Seu e-mail <span class="req">*</span></label><input type="text" id="oe" placeholder="seu@email.com" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false"></div>
     </div>
     <div class="card">
       <div class="card-t">Contato Validação</div>
-      <div class="field"><label>E-mail Validação</label>
-        <input type="text" id="ve" placeholder="validacao@email.com" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false"></div>
-      <div class="field"><label>E-mail Comitê (opcional)</label>
-        <input type="text" id="ce" placeholder="comite@email.com" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false"></div>
+      <div class="field"><label>E-mail Validação</label><input type="text" id="ve" placeholder="validacao@email.com" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false"></div>
+      <div class="field"><label>E-mail Comitê (opcional)</label><input type="text" id="ce" placeholder="comite@email.com" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false"></div>
     </div>
   </div>
-  <div class="btn-fixo"><button type="button" id="btn-t1">Próximo: Fontes →</button></div>
+  <div class="btn-fixo"><button type="button" id="btn-t1">Próximo: Fontes &#8594;</button></div>
 </div>
 
-<!-- ══════════════════════════════
-     TELA 2 — FONTES
-══════════════════════════════ -->
+<!-- ══ TELA 2: FONTES ══ -->
 
 <div class="tela" id="t2">
   <div class="hdr">
-    <div class="hdr-icon">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <rect x="1" y="1" width="14" height="14" rx="3" stroke="white" stroke-width="1.5" fill="none"/>
-        <path d="M3 8h10M8 3v10" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-    </div>
+    <div class="hdr-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="3" stroke="white" stroke-width="1.5" fill="none"/><path d="M3 8h10M8 3v10" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
     <div class="hdr-name">Fontes</div>
-    <button class="hdr-back" type="button" id="btn-voltar">← Voltar</button>
+    <button class="hdr-back" type="button" id="btn-voltar">&#8592; Voltar</button>
   </div>
   <div class="wrap">
     <div class="card">
       <div class="card-t">Tipo de Fonte</div>
       <div class="tiles">
-        <div class="tile" data-s="pdf" onclick="togTile(this)"><div class="tile-i">📄</div><div class="tile-l">PDF/Word</div></div>
-        <div class="tile" data-s="sharepoint" onclick="togTile(this)"><div class="tile-i">☁</div><div class="tile-l">SharePoint</div></div>
-        <div class="tile" data-s="databricks" onclick="togTile(this)"><div class="tile-i">⚡</div><div class="tile-l">Databricks</div></div>
-        <div class="tile" data-s="gcp" onclick="togTile(this)"><div class="tile-i">🔵</div><div class="tile-l">GCP</div></div>
-        <div class="tile" data-s="python" onclick="togTile(this)"><div class="tile-i">🐍</div><div class="tile-l">Python/Jupyter</div></div>
-        <div class="tile" data-s="r" onclick="togTile(this)"><div class="tile-i">📊</div><div class="tile-l">R/RMarkdown</div></div>
-        <div class="tile" data-s="git" onclick="togTile(this)"><div class="tile-i">📁</div><div class="tile-l">Git/GitLab</div></div>
-        <div class="tile" data-s="link" onclick="togTile(this)"><div class="tile-i">🔗</div><div class="tile-l">Link/URL</div></div>
+        <div class="tile" data-s="pdf" onclick="togTile(this)"><div class="tile-i">&#128196;</div><div class="tile-l">PDF/Word</div></div>
+        <div class="tile" data-s="sharepoint" onclick="togTile(this)"><div class="tile-i">&#9729;</div><div class="tile-l">SharePoint</div></div>
+        <div class="tile" data-s="databricks" onclick="togTile(this)"><div class="tile-i">&#9889;</div><div class="tile-l">Databricks</div></div>
+        <div class="tile" data-s="gcp" onclick="togTile(this)"><div class="tile-i">&#128309;</div><div class="tile-l">GCP</div></div>
+        <div class="tile" data-s="python" onclick="togTile(this)"><div class="tile-i">&#128013;</div><div class="tile-l">Python/Jupyter</div></div>
+        <div class="tile" data-s="r" onclick="togTile(this)"><div class="tile-i">&#128202;</div><div class="tile-l">R/RMarkdown</div></div>
+        <div class="tile" data-s="git" onclick="togTile(this)"><div class="tile-i">&#128193;</div><div class="tile-l">Git/GitLab</div></div>
+        <div class="tile" data-s="link" onclick="togTile(this)"><div class="tile-i">&#128279;</div><div class="tile-l">Link/URL</div></div>
       </div>
     </div>
     <div class="card">
       <div class="card-t">Upload de Arquivos</div>
-      <label id="finp-label" for="finp">⬆ Toque para selecionar arquivos<br><span style="font-size:11px;font-weight:400;color:#717A8C;">PDF, DOCX, .py, .ipynb, .txt e outros</span></label>
+      <label class="up-label" for="finp">&#11014; Toque para selecionar arquivos<br><span style="font-size:11px;font-weight:400;color:#717A8C;">PDF, DOCX, .py, .ipynb, .txt e outros</span></label>
       <input type="file" id="finp" multiple onchange="addFiles(this.files)">
       <div id="flist"></div>
     </div>
@@ -338,27 +315,20 @@ textarea{resize:vertical;min-height:70px;}
       <textarea id="ctx" placeholder="Cole trechos de código ou descrições do modelo..."></textarea>
     </div>
   </div>
-  <div class="btn-fixo"><button type="button" id="btn-t2">▶ Executar Análise</button></div>
+  <div class="btn-fixo"><button type="button" id="btn-t2">&#9654; Executar Análise</button></div>
 </div>
 
-<!-- ══════════════════════════════
-     TELA 3 — ANÁLISE
-══════════════════════════════ -->
+<!-- ══ TELA 3: ANÁLISE ══ -->
 
 <div class="tela" id="t3">
   <div class="hdr">
-    <div class="hdr-icon">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <rect x="1" y="1" width="14" height="14" rx="3" stroke="white" stroke-width="1.5" fill="none"/>
-        <path d="M3 8h10M8 3v10" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-    </div>
+    <div class="hdr-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="3" stroke="white" stroke-width="1.5" fill="none"/><path d="M3 8h10M8 3v10" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
     <div class="hdr-name">Analisando...</div>
   </div>
   <div class="wrap">
     <div class="card" style="text-align:center;padding:32px 16px;">
       <div class="spin"></div>
-      <div style="font-size:17px;font-weight:700;margin-bottom:6px;" id="ana-t">Agentes trabalhando...</div>
+      <div style="font-size:17px;font-weight:700;margin-bottom:6px;">Agentes trabalhando...</div>
       <div style="font-size:13px;color:#717A8C;margin-bottom:24px;">Aguarde alguns segundos.</div>
       <div style="max-width:320px;margin:0 auto;text-align:left;">
         <div class="step on" id="s1"><div class="dot"></div><div><div class="stxt">Agente de Ingestão</div><div class="ssub">Lendo arquivos e links</div></div></div>
@@ -371,18 +341,11 @@ textarea{resize:vertical;min-height:70px;}
   </div>
 </div>
 
-<!-- ══════════════════════════════
-     TELA 4 — MODEL CARD
-══════════════════════════════ -->
+<!-- ══ TELA 4: MODEL CARD ══ -->
 
 <div class="tela" id="t4">
   <div class="hdr">
-    <div class="hdr-icon">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <rect x="1" y="1" width="14" height="14" rx="3" stroke="white" stroke-width="1.5" fill="none"/>
-        <path d="M3 8h10M8 3v10" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-    </div>
+    <div class="hdr-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="3" stroke="white" stroke-width="1.5" fill="none"/><path d="M3 8h10M8 3v10" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
     <div class="hdr-name">Model Card</div>
     <button class="hdr-back" type="button" id="btn-novo">+ Novo</button>
   </div>
@@ -390,25 +353,34 @@ textarea{resize:vertical;min-height:70px;}
 </div>
 
 <script>
-// ── ESTADO ──────────────────────────────────────
 var FILES=[],LINKS=[],SOURCES=[],RESULT=null,DECISION=null;
 
-// ── TELAS ───────────────────────────────────────
+// ── TELAS ──────────────────────────────────────────
 function ir(id){
-  var all=['t0','t1','t2','t3','t4'];
+  var all=['t1','t2','t3','t4'];
   for(var i=0;i<all.length;i++){
     var el=document.getElementById(all[i]);
-    if(el) el.className='tela'+(all[i]===id?' ativa':'');
+    if(el)el.className='tela'+(all[i]===id?' ativa':'');
   }
   window.scrollTo(0,0);
 }
 
-// ── UTILS ───────────────────────────────────────
+// ── AJUDA ──────────────────────────────────────────
+function abrirAjuda(){
+  var o=document.getElementById('ajuda-overlay');
+  if(o)o.className='ajuda-overlay on';
+}
+function fecharAjuda(){
+  var o=document.getElementById('ajuda-overlay');
+  if(o)o.className='ajuda-overlay';
+}
+
+// ── UTILS ──────────────────────────────────────────
 function GV(id){var e=document.getElementById(id);return(e&&e.value)?e.value.trim():'';}
 function G(id){return document.getElementById(id);}
 function makeUID(){return 'MDL-'+Math.random().toString(36).substr(2,6).toUpperCase();}
 
-// ── TILES ───────────────────────────────────────
+// ── TILES ──────────────────────────────────────────
 function togTile(el){
   var s=el.getAttribute('data-s');
   var on=el.className.indexOf('on')>=0;
@@ -417,7 +389,7 @@ function togTile(el){
   if(!on){if(idx<0)SOURCES.push(s);}else{if(idx>=0)SOURCES.splice(idx,1);}
 }
 
-// ── ARQUIVOS ────────────────────────────────────
+// ── ARQUIVOS ───────────────────────────────────────
 function addFiles(fl){
   var i,f,j,found;
   for(i=0;i<fl.length;i++){
@@ -433,248 +405,135 @@ function renderFiles(){
     h+='<div style="display:flex;align-items:center;gap:8px;background:#F8F9FA;border:1px solid #ECEEF2;border-radius:6px;padding:8px 10px;margin-top:6px;">'
       +'<span style="font-size:11px;color:#717A8C;font-weight:700;flex-shrink:0;">'+FILES[i].name.split('.').pop().toUpperCase()+'</span>'
       +'<span style="flex:1;font-size:12px;color:#3C4353;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+FILES[i].name+' ('+Math.round(FILES[i].size/1024)+'KB)</span>'
-      +'<button type="button" onclick="rmF('+i+')" style="background:none;border:none;color:#B8BEC9;font-size:18px;cursor:pointer;-webkit-appearance:none;touch-action:manipulation;padding:0;">×</button>'
+      +'<button type="button" onclick="rmF('+i+')" style="background:none;border:none;color:#B8BEC9;font-size:18px;cursor:pointer;-webkit-appearance:none;touch-action:manipulation;padding:0;">&#215;</button>'
       +'</div>';
   }
   G('flist').innerHTML=h;
 }
 function rmF(i){FILES.splice(i,1);renderFiles();}
 
-// ── LINKS ───────────────────────────────────────
+// ── LINKS ──────────────────────────────────────────
 function addLink(){
   var inp=G('linp'),v=inp.value.trim(),i,found=false;
   if(!v)return;
   for(i=0;i<LINKS.length;i++){if(LINKS[i]===v){found=true;break;}}
   if(!found)LINKS.push(v);
-  inp.value='';
-  renderChips();
+  inp.value='';renderChips();
 }
 function renderChips(){
   var h='',i;
   for(i=0;i<LINKS.length;i++){
-    h+='<span class="chip">'+LINKS[i]
-      +'<button class="chip-x" type="button" onclick="rmL('+i+')">×</button></span>';
+    h+='<span class="chip">'+LINKS[i]+'<button class="chip-x" type="button" onclick="rmL('+i+')">&#215;</button></span>';
   }
   G('chips').innerHTML=h;
 }
 function rmL(i){LINKS.splice(i,1);renderChips();}
 
-// ── VALIDAÇÃO TELA 1 ────────────────────────────
+// ── VALIDAÇÃO ──────────────────────────────────────
 function validarT1(){
   if(!GV('nm')){alert('Informe o Nome do Modelo.');return false;}
-  if(!GV('ar')){alert('Informe a Área.');return false;}
+  if(!GV('ar')){alert('Informe a Area.');return false;}
   if(!GV('ow')){alert('Informe o Model Owner.');return false;}
   if(!GV('oe')){alert('Informe seu e-mail.');return false;}
   return true;
 }
 
-// ── ANÁLISE ─────────────────────────────────────
+// ── ANÁLISE ────────────────────────────────────────
 function iniciarAnalise(){
   ir('t3');
-  // Steps com setTimeout — sem async/await
-  var steps=[
-    {id:'s1',delay:0},
-    {id:'s2',delay:1500},
-    {id:'s3',delay:3000},
-    {id:'s4',delay:4500},
-    {id:'s5',delay:6000}
-  ];
-  for(var i=0;i<steps.length;i++){
+  var ids=['s1','s2','s3','s4','s5'];
+  var delays=[0,1500,3000,4500,6000];
+  for(var i=0;i<ids.length;i++){
     (function(cur,prev,delay){
       setTimeout(function(){
         if(prev){var pe=G(prev);if(pe)pe.className='step dn';}
         var ce=G(cur);if(ce)ce.className='step on';
       },delay);
-    })(steps[i].id, i>0?steps[i-1].id:null, steps[i].delay);
+    })(ids[i],i>0?ids[i-1]:null,delays[i]);
   }
-  // Após steps: chamar API ou demo
   setTimeout(function(){
-    var last=G('s5');if(last)last.className='step dn';
-    var at=G('ana-t');if(at)at.textContent='Finalizando...';
+    var s5=G('s5');if(s5)s5.className='step dn';
     var key=GV('api-key');
     if(key){
-      callAPI(key)
-        .then(function(r){mostrarMC(r);})
-        .catch(function(e){
-          console.error(e);
-          mostrarMC(makeDemo());
-        });
-    } else {
+      callAPI(key).then(function(r){mostrarMC(r);}).catch(function(){mostrarMC(makeDemo());});
+    }else{
       setTimeout(function(){mostrarMC(makeDemo());},500);
     }
   },7500);
 }
 
-function mostrarMC(r){
-  RESULT=r;
-  ir('t4');
-  renderMC(r);
-}
+function mostrarMC(r){RESULT=r;ir('t4');renderMC(r);}
 
-// ── API ─────────────────────────────────────────
+// ── API ────────────────────────────────────────────
 function readTxt(f){
   return new Promise(function(res,rej){
-    var r=new FileReader();
-    r.onload=function(e){res(e.target.result);};
-    r.onerror=rej;r.readAsText(f);
+    var r=new FileReader();r.onload=function(e){res(e.target.result);};r.onerror=rej;r.readAsText(f);
   });
 }
-
 async function callAPI(key){
   var nm=GV('nm'),ar=GV('ar'),ow=GV('ow'),txt='',i;
-  for(i=0;i<FILES.length;i++){
-    try{var t=await readTxt(FILES[i]);txt+='\nARQ:'+FILES[i].name+'\n'+t.substring(0,3000);}catch(e){}
-  }
+  for(i=0;i<FILES.length;i++){try{var t=await readTxt(FILES[i]);txt+='\nARQ:'+FILES[i].name+'\n'+t.substring(0,3000);}catch(e){}}
   var p='Gere Model Card em JSON puro sem markdown.\nModelo:'+nm+'\nArea:'+ar+'\nOwner:'+ow
     +'\nFontes:'+SOURCES.join(',')+'\nLinks:'+LINKS.join(',')+'\nCtx:'+GV('ctx')+(txt?'\n'+txt:'')
     +'\nRetorne SOMENTE JSON:\n{"family":"string","technique":"string","description":"string","platform":"string","inputs":"string","outputs":"string","autonomy":"string","regulatory":"string","scores":{"D1":3,"D2":3,"D3":3,"D4":3,"D5":3,"D6":3},"weighted_score":3.0,"criticality_level":"N2","criticality_name":"Alto","tags":["tag"],"controls":[{"text":"texto","type":"crit"}],"validation_scope":"string","confidence":70,"confidence_note":"string"}';
-  var res=await fetch('https://api.anthropic.com/v1/messages',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','x-api-key':key,
-      'anthropic-version':'2023-06-01',
-      'anthropic-dangerous-direct-browser-access':'true'},
-    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,
-      messages:[{role:'user',content:p}]})
-  });
+  var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',
+    headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,messages:[{role:'user',content:p}]})});
   var data=await res.json();
   if(data.error)throw new Error(data.error.message);
   var raw=data.content.map(function(b){return b.text||'';}).join('');
   var r=JSON.parse(raw.substring(raw.indexOf('{'),raw.lastIndexOf('}')+1));
-  r.model_name=nm;r.model_area=ar;r.model_owner=ow;
-  return r;
+  r.model_name=nm;r.model_area=ar;r.model_owner=ow;return r;
 }
 
-// ── DEMO ────────────────────────────────────────
 function makeDemo(){
-  return{
-    model_name:GV('nm')||'Scoring de Credito PF',
-    model_area:GV('ar')||'SUPEC',model_owner:GV('ow')||'Demo',
+  return{model_name:GV('nm')||'Scoring de Credito PF',model_area:GV('ar')||'SUPEC',model_owner:GV('ow')||'Demo',
     family:'Machine Learning',technique:'Gradient Boosting (XGBoost)',
     description:'Modelo para estimacao de probabilidade de default em carteiras PF com alcada automatica ate R$50 mil.',
-    platform:'Python + Databricks',inputs:'Score bureau, historico, renda',
-    outputs:'Score PD (0-1000), faixa risco, limite',
+    platform:'Python + Databricks',inputs:'Score bureau, historico, renda',outputs:'Score PD (0-1000), faixa risco, limite',
     autonomy:'Automatico ate R$50 mil',regulatory:'Basileia III / IFRS 9',
-    scores:{D1:4,D2:4,D3:4,D4:3,D5:5,D6:3},weighted_score:3.90,
-    criticality_level:'N1',criticality_name:'Critico',
+    scores:{D1:4,D2:4,D3:4,D4:3,D5:5,D6:3},weighted_score:3.90,criticality_level:'N1',criticality_name:'Critico',
     tags:['credito-pf','xgboost','basileia-iii'],
-    controls:[
-      {text:'Monitoramento continuo PSI/KS/Gini',type:'crit'},
-      {text:'Validacao independente anual',type:'crit'},
-      {text:'Analise de vies a cada recalibracao',type:'warn'},
-      {text:'SHAP values para contestacoes',type:'ok'}
-    ],
+    controls:[{text:'Monitoramento continuo PSI/KS/Gini',type:'crit'},{text:'Validacao independente anual',type:'crit'},{text:'Analise de vies a cada recalibracao',type:'warn'},{text:'SHAP values para contestacoes',type:'ok'}],
     validation_scope:'Validacao Profunda N1: revisao conceitual, backtesting 24m, stress test, SHAP.',
-    confidence:72,confidence_note:'Resultado de demonstracao.'
-  };
+    confidence:72,confidence_note:'Resultado de demonstracao.'};
 }
 
-// ── RENDER MODEL CARD ───────────────────────────
+// ── RENDER MODEL CARD ──────────────────────────────
 function renderMC(r){
   var id=r.uid||makeUID();r.uid=id;
   var ts=new Date().toLocaleString('pt-BR');
   var oe=GV('oe'),ve=GV('ve');
-  var dm={D1:'D1 Impacto Fin.',D2:'D2 Exp. Reg.',D3:'D3 Autonomia',
-          D4:'D4 Opacidade',D5:'D5 Abrangencia',D6:'D6 Maturidade'};
+  var dm={D1:'D1 Impacto Fin.',D2:'D2 Exp. Reg.',D3:'D3 Autonomia',D4:'D4 Opacidade',D5:'D5 Abrangencia',D6:'D6 Maturidade'};
   var sc=r.scores||{},k,scH='';
-  for(k in sc){
-    scH+='<div class="scrow"><div class="scd">'+(dm[k]||k)+'</div>'
-      +'<div class="sctrk"><div class="scf" style="width:'+((sc[k]/5)*100)+'%;"></div></div>'
-      +'<div class="scv">'+sc[k]+'/5</div></div>';
-  }
-  var ctH=(r.controls||[]).map(function(c){
-    return '<div class="ci '+(c.type||'')+'">'+(c.text||'')+'</div>';
-  }).join('');
-  var tgH=(r.tags||[]).map(function(t){
-    return '<div class="tag">'+t+'</div>';
-  }).join('');
+  for(k in sc){scH+='<div class="scrow"><div class="scd">'+(dm[k]||k)+'</div><div class="sctrk"><div class="scf" style="width:'+((sc[k]/5)*100)+'%;"></div></div><div class="scv">'+sc[k]+'/5</div></div>';}
+  var ctH=(r.controls||[]).map(function(c){return '<div class="ci '+(c.type||'')+'">'+(c.text||'')+'</div>';}).join('');
+  var tgH=(r.tags||[]).map(function(t){return '<div class="tag">'+t+'</div>';}).join('');
   var h='';
-  // Header
-  h+='<div class="mc-hd">'
-    +'<div class="mc-id">'+id+'</div>'
-    +'<div class="mc-n">'+r.model_name+'</div>'
-    +'<div class="mc-f">'+r.family+' — '+r.technique+'</div>'
-    +'<div class="mc-lv"><div class="mc-ln">'+r.criticality_level+'</div>'
-    +'<div class="mc-ln2">'+r.criticality_name+'</div></div>'
-    +'<div class="mc-meta">'
-    +'<div><div class="mc-ml">Area</div><div class="mc-mv">'+r.model_area+'</div></div>'
-    +'<div><div class="mc-ml">Owner</div><div class="mc-mv">'+r.model_owner+'</div></div>'
-    +'<div><div class="mc-ml">Gerado</div><div class="mc-mv">'+ts+'</div></div>'
-    +'</div></div>';
-  // Cards
-  h+='<div class="card"><div class="sec-lbl">Descrição</div><div class="txt">'+r.description+'</div></div>';
-  h+='<div class="card"><div class="sec-lbl">Identificação Técnica</div><div class="ig">'
-    +'<div class="ic"><div class="ic-l">Técnica</div><div class="ic-v">'+r.technique+'</div></div>'
-    +'<div class="ic"><div class="ic-l">Plataforma</div><div class="ic-v">'+r.platform+'</div></div>'
-    +'<div class="ic"><div class="ic-l">Inputs</div><div class="ic-v">'+r.inputs+'</div></div>'
-    +'<div class="ic"><div class="ic-l">Outputs</div><div class="ic-v">'+r.outputs+'</div></div>'
-    +'<div class="ic"><div class="ic-l">Autonomia</div><div class="ic-v">'+r.autonomy+'</div></div>'
-    +'<div class="ic"><div class="ic-l">Regulatório</div><div class="ic-v">'+r.regulatory+'</div></div>'
-    +'<div class="ic"><div class="ic-l">Chave</div><div class="ic-v" style="color:#005CA9;font-family:monospace;font-size:11px;">'+id+'</div></div>'
-    +'</div></div>';
-  h+='<div class="card"><div class="sec-lbl">Criticidade</div>'+scH
-    +'<div class="sctot"><div class="sctot-l">Pontuação Ponderada</div>'
-    +'<div class="sctot-v">'+((r.weighted_score||0).toFixed(2))+'</div></div>'
-    +'<div style="font-size:11px;color:#B8BEC9;margin-top:4px;">'+(r.confidence_note||'')+'</div></div>';
+  h+='<div class="mc-hd"><div class="mc-id">'+id+'</div><div class="mc-n">'+r.model_name+'</div><div class="mc-f">'+r.family+' - '+r.technique+'</div><div class="mc-lv"><div class="mc-ln">'+r.criticality_level+'</div><div class="mc-ln2">'+r.criticality_name+'</div></div><div class="mc-meta"><div><div class="mc-ml">Area</div><div class="mc-mv">'+r.model_area+'</div></div><div><div class="mc-ml">Owner</div><div class="mc-mv">'+r.model_owner+'</div></div><div><div class="mc-ml">Gerado</div><div class="mc-mv">'+ts+'</div></div></div></div>';
+  h+='<div class="card"><div class="sec-lbl">Descricao</div><div class="txt">'+r.description+'</div></div>';
+  h+='<div class="card"><div class="sec-lbl">Identificacao Tecnica</div><div class="ig"><div class="ic"><div class="ic-l">Tecnica</div><div class="ic-v">'+r.technique+'</div></div><div class="ic"><div class="ic-l">Plataforma</div><div class="ic-v">'+r.platform+'</div></div><div class="ic"><div class="ic-l">Inputs</div><div class="ic-v">'+r.inputs+'</div></div><div class="ic"><div class="ic-l">Outputs</div><div class="ic-v">'+r.outputs+'</div></div><div class="ic"><div class="ic-l">Autonomia</div><div class="ic-v">'+r.autonomy+'</div></div><div class="ic"><div class="ic-l">Regulatorio</div><div class="ic-v">'+r.regulatory+'</div></div><div class="ic"><div class="ic-l">Chave</div><div class="ic-v" style="color:#005CA9;font-family:monospace;font-size:11px;">'+id+'</div></div></div></div>';
+  h+='<div class="card"><div class="sec-lbl">Criticidade</div>'+scH+'<div class="sctot"><div class="sctot-l">Pontuacao Ponderada</div><div class="sctot-v">'+((r.weighted_score||0).toFixed(2))+'</div></div><div style="font-size:11px;color:#B8BEC9;margin-top:4px;">'+(r.confidence_note||'')+'</div></div>';
   h+='<div class="card"><div class="sec-lbl">Tags</div><div class="tags">'+tgH+'</div></div>';
-  h+='<div class="card"><div class="sec-lbl">Controles</div>'+ctH+'</div>';
-  h+='<div class="card"><div class="sec-lbl">Escopo de Validação</div><div class="txt">'+r.validation_scope+'</div></div>';
-  h+='<div class="card"><div class="sec-lbl">Notificação — Owner</div>'
-    +'<div style="font-size:11px;color:#9BA3B2;margin-bottom:6px;">Para: '+oe+'</div>'
-    +'<div class="email-pre">Prezado(a) '+r.model_owner+',\n\nCatalogação concluída!\n\nID: '+id
-    +'\nModelo: '+r.model_name+'\nNível: '+r.criticality_level+' — '+r.criticality_name
-    +'\nPontuação: '+((r.weighted_score||0).toFixed(2))+'/5\nGerado: '+ts
-    +'\n\nEquipe ModelScan</div></div>';
-  h+='<div class="card"><div class="sec-lbl">Notificação — Validação</div>'
-    +'<div style="font-size:11px;color:#9BA3B2;margin-bottom:6px;">Para: '+ve+'</div>'
-    +'<div class="email-pre">Equipe de Validação,\n\nNovo modelo — criticidade '+r.criticality_level
-    +'.\n\nID: '+id+'\nModelo: '+r.model_name+'\nOwner: '+r.model_owner
-    +'\nPontuação: '+((r.weighted_score||0).toFixed(2))+'/5\n\nModelScan</div></div>';
-  // Confirmação e Revisão
-  h+='<div class="card"><div class="sec-lbl">Moderação — Sua Confirmação</div>'
-    +'<p style="font-size:12px;color:#717A8C;line-height:1.6;margin-bottom:12px;">Revise todos os campos acima. Se estiver de acordo, confirme. Se houver divergências, solicite revisão e edite os campos ou justifique abaixo.</p>'
-    +'<div class="dec-row">'
-    +'<button class="dec-btn ap" type="button" id="btn-ap" onclick="setD(\'a\')">✓ Confirmo!</button>'
-    +'<button class="dec-btn rj" type="button" id="btn-rj" onclick="setD(\'r\')">✎ Solicito revisão</button>'
-    +'</div>'
-    // Painel de revisão — aparece só quando seleciona "Solicito revisão"
-    +'<div id="painel-revisao" style="display:none;margin-top:14px;border-top:1px solid #ECEEF2;padding-top:14px;">'
-    +'<div style="font-size:12px;font-weight:700;color:#9A6200;background:#FDF5E6;border:1px solid rgba(154,98,0,.2);border-radius:8px;padding:10px 12px;margin-bottom:12px;">✎ Painel de Revisão — edite os campos com divergência e justifique abaixo.</div>'
-    // Edição direta de campos
-    +'<div class="g2" style="margin-bottom:12px;">'
-    +'<div class="field" style="margin:0;"><label style="font-size:11px;">Corrigir Família</label><input type="text" id="r-family" placeholder="'+r.family+'"></div>'
-    +'<div class="field" style="margin:0;"><label style="font-size:11px;">Corrigir Técnica</label><input type="text" id="r-technique" placeholder="'+r.technique+'"></div>'
-    +'</div>'
-    +'<div class="g2" style="margin-bottom:12px;">'
-    +'<div class="field" style="margin:0;"><label style="font-size:11px;">Corrigir Nível de Criticidade</label>'
-    +'<select id="r-level" style="width:100%;border:1.5px solid #D0D5DD;border-radius:8px;padding:10px;font-size:14px;-webkit-appearance:none;">'
-    +'<option value="">manter ('+r.criticality_level+')</option>'
-    +'<option>N1</option><option>N2</option><option>N3</option><option>N4</option><option>N5</option>'
-    +'</select></div>'
-    +'<div class="field" style="margin:0;"><label style="font-size:11px;">Corrigir Plataforma</label><input type="text" id="r-platform" placeholder="'+r.platform+'"></div>'
-    +'</div>'
-    +'<div class="field" style="margin-bottom:10px;"><label style="font-size:11px;">Corrigir Descrição</label>'
-    +'<textarea id="r-desc" style="min-height:60px;" placeholder="'+r.description.substring(0,60)+'..."></textarea></div>'
+  h+='<div class="card"><div class="sec-lbl">Controles Recomendados</div>'+ctH+'</div>';
+  h+='<div class="card"><div class="sec-lbl">Escopo de Validacao</div><div class="txt">'+r.validation_scope+'</div></div>';
+  h+='<div class="card"><div class="sec-lbl">Notificacao - Owner</div><div style="font-size:11px;color:#9BA3B2;margin-bottom:6px;">Para: '+oe+'</div><div class="email-pre">Prezado(a) '+r.model_owner+',\n\nCatalogacao concluida!\n\nID: '+id+'\nModelo: '+r.model_name+'\nNivel: '+r.criticality_level+' - '+r.criticality_name+'\nPontuacao: '+((r.weighted_score||0).toFixed(2))+'/5\nGerado: '+ts+'\n\nEquipe ModelScan</div></div>';
+  h+='<div class="card"><div class="sec-lbl">Notificacao - Validacao</div><div style="font-size:11px;color:#9BA3B2;margin-bottom:6px;">Para: '+ve+'</div><div class="email-pre">Equipe de Validacao,\n\nNovo modelo - criticidade '+r.criticality_level+'.\n\nID: '+id+'\nModelo: '+r.model_name+'\nOwner: '+r.model_owner+'\nPontuacao: '+((r.weighted_score||0).toFixed(2))+'/5\n\nModelScan</div></div>';
+  // MODERAÇÃO
+  h+='<div class="card"><div class="sec-lbl">Moderacao - Sua Confirmacao</div>';
+  h+='<p style="font-size:12px;color:#717A8C;line-height:1.6;margin-bottom:12px;">Revise os campos acima. Se estiver de acordo, confirme. Se houver divergencias, solicite revisao e edite abaixo.</p>';
+  h+='<div class="dec-row"><button class="dec-btn ap" type="button" id="btn-ap" onclick="setD(\'a\')">&#10003; Confirmo!</button><button class="dec-btn rj" type="button" id="btn-rj" onclick="setD(\'r\')">&#9998; Solicito revisao</button></div>';
+  h+='<div id="painel-revisao" style="display:none;margin-top:14px;border-top:1px solid #ECEEF2;padding-top:14px;">';
+  h+='<div style="font-size:12px;font-weight:700;color:#9A6200;background:#FDF5E6;border:1px solid rgba(154,98,0,.2);border-radius:8px;padding:10px 12px;margin-bottom:12px;">&#9998; Edite os campos com divergencia e preencha a justificativa.</div>';
+  h+='<div class="g2" style="margin-bottom:10px;"><div class="field" style="margin:0;"><label style="font-size:11px;">Corrigir Familia</label><input type="text" id="r-family" placeholder="'+r.family+'"></div><div class="field" style="margin:0;"><label style="font-size:11px;">Corrigir Tecnica</label><input type="text" id="r-technique" placeholder="'+r.technique+'"></div></div>';
+  h+='<div class="g2" style="margin-bottom:10px;"><div class="field" style="margin:0;"><label style="font-size:11px;">Corrigir Nivel Criticidade</label><select id="r-level" style="width:100%;border:1.5px solid #D0D5DD;border-radius:8px;padding:10px;font-size:14px;-webkit-appearance:none;"><option value="">manter ('+r.criticality_level+')</option><option>N1</option><option>N2</option><option>N3</option><option>N4</option><option>N5</option></select></div><div class="field" style="margin:0;"><label style="font-size:11px;">Corrigir Plataforma</label><input type="text" id="r-platform" placeholder="'+r.platform+'"></div></div>';
+  h+='<div class="field" style="margin-bottom:10px;"><label style="font-size:11px;">Corrigir Descricao</label><textarea id="r-desc" style="min-height:60px;" placeholder="'+r.description.substring(0,60)+'..."></textarea></div>';
 
-```
-+'<div class="field" style="margin-bottom:10px;"><label style="font-size:11px;">Corrigir Escopo de Validação</label>'
-+'<textarea id="r-scope" style="min-height:50px;" placeholder="'+r.validation_scope.substring(0,60)+'..."></textarea></div>'
-// Justificativa obrigatória
-+'<div style="background:#FDF5E6;border:1px solid rgba(154,98,0,.25);border-radius:8px;padding:12px;margin-bottom:10px;">'
-+'<label style="font-size:12px;font-weight:700;color:#9A6200;display:block;margin-bottom:6px;">Justificativa da Revisão (obrigatório)</label>'
-+'<textarea id="r-justif" style="min-height:80px;border-color:rgba(154,98,0,.4);" placeholder="Descreva o que está divergente, qual o valor correto e por que a IA gerou diferente..."></textarea>'
-+'</div>'
-+'</div>'
-+'<button type="button" id="btn-rev" style="display:block;width:100%;padding:14px;background:#9A6200 !important;color:#fff !important;border:none !important;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;-webkit-appearance:none !important;touch-action:manipulation;margin-bottom:0;">Registrar Revisão</button>'
-+'<div id="ok-box" class="ok-box"></div>'
-+'</div>';
-```
-
-// Exportar
-h+=’<div class="exp-row">’
-+’<button class="exp-btn" type="button" onclick="expJ()">↓ JSON</button>’
-+’<button class="exp-btn" type="button" onclick="expT()">↓ TXT</button>’
-+’<button class="exp-btn" type="button" onclick="window.print()">↓ PDF</button>’
-+’</div>’;
+h+=’<div style="background:#FDF5E6;border:1px solid rgba(154,98,0,.25);border-radius:8px;padding:12px;margin-bottom:10px;"><label style="font-size:12px;font-weight:700;color:#9A6200;display:block;margin-bottom:6px;">Justificativa (obrigatorio)</label><textarea id="r-justif" style="min-height:80px;border-color:rgba(154,98,0,.4);" placeholder="Descreva o que esta divergente, qual o valor correto e por que..."></textarea></div>’;
+h+=’<button type="button" onclick="finalizarRevisao()" style="display:block;width:100%;padding:14px;background:#9A6200;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;-webkit-appearance:none;touch-action:manipulation;">Registrar Revisao</button>’;
+h+=’</div>’;
+h+=’<div id="ok-box" class="ok-box"></div></div>’;
+h+=’<div class="exp-row"><button class="exp-btn" type="button" onclick="expJ()">↓ JSON</button><button class="exp-btn" type="button" onclick="expT()">↓ TXT</button><button class="exp-btn" type="button" onclick="window.print()">↓ PDF</button></div>’;
 G(‘mc-out’).innerHTML=h;
 }
 
@@ -683,78 +542,61 @@ DECISION=d;
 var ba=G(‘btn-ap’),br=G(‘btn-rj’),pr=G(‘painel-revisao’),ob=G(‘ok-box’);
 if(ba)ba.className=‘dec-btn ap’+(d===‘a’?’ on’:’’);
 if(br)br.className=‘dec-btn rj’+(d===‘r’?’ on’:’’);
-// Mostrar/ocultar painel de revisão
-if(pr) pr.style.display=(d===‘r’?‘block’:‘none’);
-// Se confirmar, registrar imediatamente
-if(d===‘a’ && ob){
+if(pr)pr.style.display=(d===‘r’?‘block’:‘none’);
+if(d===‘a’&&ob){
 var ts=new Date().toLocaleString(‘pt-BR’);
-ob.style.display=‘block’;
-ob.style.background=’#E6F4EE’;ob.style.color=’#1B7F4F’;
-ob.innerHTML=’✅ <strong>Confirmado!</strong> Chave: <strong>’+(RESULT&&RESULT.uid||’’)+’</strong><br>Por ‘+(GV(‘ow’)||‘Owner’)+’ em ’+ts;
-} else if(d===‘r’ && ob){
-ob.style.display=‘none’;
-}
+ob.style.display=‘block’;ob.style.background=’#E6F4EE’;ob.style.color=’#1B7F4F’;ob.style.border=‘1px solid rgba(27,127,79,.3)’;
+ob.innerHTML=’✅ <strong>Confirmado!</strong> Chave: <strong>’+(RESULT&&RESULT.uid||’’)+’</strong><br>Por ‘+(GV(‘ow’)||’’)+’ em ’+ts;
+}else if(ob)ob.style.display=‘none’;
 }
 
 function finalizarRevisao(){
 var just=GV(‘r-justif’);
-if(!just){alert(‘Preencha a Justificativa da Revisão.’);return;}
+if(!just){alert(‘Preencha a Justificativa da Revisao.’);return;}
 var ts=new Date().toLocaleString(‘pt-BR’);
-// Aplicar correções ao RESULT
-var fam=GV(‘r-family’),tec=GV(‘r-technique’),lev=GV(‘r-level’),plat=GV(‘r-platform’),desc=GV(‘r-desc’),scope=GV(‘r-scope’);
 if(RESULT){
-if(fam)  RESULT.family=fam;
-if(tec)  RESULT.technique=tec;
-if(lev)  RESULT.criticality_level=lev;
-if(plat) RESULT.platform=plat;
-if(desc) RESULT.description=desc;
-if(scope)RESULT.validation_scope=scope;
-RESULT.revisao={timestamp:ts,owner:GV(‘ow’),justificativa:just,campos_corrigidos:{
-family:fam||null,technique:tec||null,criticality_level:lev||null,
-platform:plat||null,description:desc?’(editado)’:null,validation_scope:scope?’(editado)’:null
-}};
+var fam=GV(‘r-family’),tec=GV(‘r-technique’),lev=GV(‘r-level’),plat=GV(‘r-platform’),desc=GV(‘r-desc’);
+if(fam)RESULT.family=fam;if(tec)RESULT.technique=tec;if(lev)RESULT.criticality_level=lev;if(plat)RESULT.platform=plat;if(desc)RESULT.description=desc;
+RESULT.revisao={timestamp:ts,owner:GV(‘ow’),justificativa:just};
 }
 var ob=G(‘ok-box’);
-if(ob){
-ob.style.display=‘block’;
-ob.style.background=’#FDF5E6’;ob.style.color=’#9A6200’;ob.style.borderColor=‘rgba(154,98,0,.3)’;
-ob.innerHTML=’✎ <strong>Revisão registrada!</strong> Chave: <strong>’+(RESULT&&RESULT.uid||’’)+’</strong><br>’
-+‘Justificativa: “’+just.substring(0,80)+(just.length>80?’…’:’’)+’”<br>’
-+’Por ‘+(GV(‘ow’)||‘Owner’)+’ em ’+ts;
-}
+if(ob){ob.style.display=‘block’;ob.style.background=’#FDF5E6’;ob.style.color=’#9A6200’;ob.style.border=‘1px solid rgba(154,98,0,.3)’;
+ob.innerHTML=’✎ <strong>Revisao registrada!</strong> Chave: <strong>’+(RESULT&&RESULT.uid||’’)+’</strong><br>Justificativa: “’+just.substring(0,80)+’”<br>Por ‘+(GV(‘ow’)||’’)+’ em ’+ts;}
 }
 
 function expJ(){if(!RESULT)return;var a=document.createElement(‘a’);a.href=URL.createObjectURL(new Blob([JSON.stringify(RESULT,null,2)],{type:‘application/json’}));a.download=‘mc-’+(RESULT.uid||‘mc’)+’.json’;document.body.appendChild(a);a.click();document.body.removeChild(a);}
-function expT(){if(!RESULT)return;var t=‘MODEL CARD: ‘+RESULT.model_name+’\nChave: ‘+RESULT.uid+’\nNível: ‘+RESULT.criticality_level+’\nPontuação: ‘+((RESULT.weighted_score||0).toFixed(2))+’\n\n’+RESULT.description+’\n\n’+RESULT.validation_scope;var a=document.createElement(‘a’);a.href=URL.createObjectURL(new Blob([t],{type:‘text/plain’}));a.download=‘mc-’+(RESULT.uid||‘mc’)+’.txt’;document.body.appendChild(a);a.click();document.body.removeChild(a);}
+function expT(){if(!RESULT)return;var t=‘MODEL CARD: ‘+RESULT.model_name+’\nChave: ‘+RESULT.uid+’\nNivel: ‘+RESULT.criticality_level+’\nPontuacao: ‘+((RESULT.weighted_score||0).toFixed(2))+’\n\n’+RESULT.description+’\n\n’+RESULT.validation_scope;var a=document.createElement(‘a’);a.href=URL.createObjectURL(new Blob([t],{type:‘text/plain’}));a.download=‘mc-’+(RESULT.uid||‘mc’)+’.txt’;document.body.appendChild(a);a.click();document.body.removeChild(a);}
 
 // ════════════════════════════════════════════════
-// BOOTSTRAP — delegação de eventos no document
-// Funciona independente do timing do DOM
+// EVENTOS — delegação no document
+// Funciona independente de timing e scroll
 // ════════════════════════════════════════════════
-function doClick(id){
-if(id===‘btn-t0’){ir(‘t1’);}
-else if(id===‘btn-t1’){if(validarT1())ir(‘t2’);}
+function handleBtn(id){
+if(id===‘btn-t1’){if(validarT1())ir(‘t2’);}
 else if(id===‘btn-t2’){iniciarAnalise();}
 else if(id===‘btn-voltar’){ir(‘t1’);}
-else if(id===‘btn-novo’){FILES=[];LINKS=[];SOURCES=[];RESULT=null;DECISION=null;ir(‘t0’);}
+else if(id===‘btn-novo’){FILES=[];LINKS=[];SOURCES=[];RESULT=null;DECISION=null;ir(‘t1’);}
 else if(id===‘btn-eye’){var i=G(‘api-key’);if(i)i.type=(i.type===‘password’?‘text’:‘password’);}
 else if(id===‘btn-ladd’){addLink();}
-else if(id===‘btn-rev’){finalizarRevisao();}
+else if(id===‘btn-ajuda’){abrirAjuda();}
+else if(id===‘btn-fecha-ajuda’){fecharAjuda();}
+else if(id===‘ajuda-overlay’){fecharAjuda();}
 }
 
-document.addEventListener(‘click’, function(e){
+document.addEventListener(‘click’,function(e){
 var t=e.target;
-if(t&&t.id) doClick(t.id);
+if(!t)return;
+if(t.id)handleBtn(t.id);
+// fechar ajuda clicando fora do painel
+if(t.className===‘ajuda-overlay on’||t.className===‘ajuda-overlay’)fecharAjuda();
 });
-document.addEventListener(‘touchend’, function(e){
-var t=e.target;
-if(t&&t.id) doClick(t.id);
-},{passive:false});
 
-// Padrão Risk Intel
-if(document.readyState===‘loading’){
-document.addEventListener(‘DOMContentLoaded’,function(){});
-}else{}
+document.addEventListener(‘touchend’,function(e){
+var t=e.target;
+if(!t)return;
+if(t.id)handleBtn(t.id);
+if(t.className===‘ajuda-overlay on’||t.className===‘ajuda-overlay’)fecharAjuda();
+},{passive:true});
 </script>
 
 </body>
